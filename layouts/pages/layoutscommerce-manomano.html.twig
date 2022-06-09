@@ -1,0 +1,109 @@
+{% if content %}
+	<section {{attributes.addClass('manomano__product')}}>
+		<div class="manomano__product--header">
+			<div class="row">
+				<header class="col-md-8">
+					{% if content.title %}
+						<h1 {{ region_attributes.title.addClass('manomano__product--title') }}>
+							{{content.title}}</h1>
+					{% endif %}
+					{% if content.list_content %}
+						<div {{ region_attributes.list_content.addClass('manomano__product--list_content') }}>
+							{{content.list_content}}
+						</div>
+					{% endif %}
+				</header>
+				<div class="col-md-8">
+					{% if content.images %}
+						<div {{ region_attributes.images.addClass('manomano__product--images') }}>
+							{{content.images}}
+						</div>
+					{% endif %}
+				</div>
+				<div class="col-md-4">
+					<div class="manomano__product--block">
+						<div class="d-flex ">
+							{% if content.price %}
+								<div {{ region_attributes.price.addClass('manomano__product--price') }}>
+									{{content.price}}
+								</div>
+							{% endif %}
+							{% if content.qty %}
+								<div {{ region_attributes.qty.addClass('manomano__product--qty') }}>
+									{{content.qty}}
+								</div>
+							{% endif %}
+						</div>
+						{% if content.add_card %}
+							<div {{ region_attributes.add_card.addClass('manomano__product--add_card') }}>
+								{{content.add_card}}
+							</div>
+						{% endif %}
+					</div>
+					<div class="manomano__product--block">
+						{% if content.titleblock1 %}
+							<div {{ region_attributes.titleblock1.addClass('manomano__product--titleblock1','titleblock') }}>
+								{{content.titleblock1}}
+							</div>
+						{% endif %}
+						{% if content.in_stock %}
+							<div {{ region_attributes.in_stock.addClass('manomano__product--in_stock') }}>
+								{% if settings.product_has_stock %}
+									<strong>
+										<i class="fas fa-check text-success"></i>
+										<span>{{'In Stock'| trans}}</span>
+										(
+										{{settings.product_has_stock}}
+										)
+									</strong>
+								{% else %}
+									<span class="text-danger">
+										<i class="fas fa-times"></i>
+										{{ 'Not in Stock' | trans}}
+									</span>
+								{% endif %}
+							</div>
+						{% endif %}
+						{% if content.shipping %}
+							<div {{ region_attributes.shipping.addClass('manomano__product--shipping','d-flex') }}>
+								<i class="fas fa-check text-success"></i>
+								{{content.shipping}}
+							</div>
+						{% endif %}
+						{% if content.garentie %}
+							<div {{ region_attributes.garentie.addClass('manomano__product--garentie','d-flex') }}>
+								<i class="fas fa-balance-scale"></i>
+								{{content.garentie}}
+							</div>
+						{% endif %}
+						{% if content.retour %}
+							<div {{ region_attributes.retour.addClass('manomano__product--retour','d-flex') }}>
+								<i class="fas fa-sync"></i>
+								{{content.retour}}
+							</div>
+						{% endif %}
+					</div>
+					{% if content.options | has_value %}
+						<div class="manomano__product--block">
+							{% if content.titleblock2 %}
+								<div {{ region_attributes.titleblock2.addClass('manomano__product--titleblock2','titleblock') }}>
+									{{content.titleblock2}}
+								</div>
+							{% endif %}
+							{% if content.options %}
+								<div {{ region_attributes.options.addClass('manomano__product--options') }}>
+									{{content.options}}
+								</div>
+							{% endif %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% if content.contents %}
+			<div class="manomano__product--contents">
+				{{content.contents}}
+			</div>
+		{% endif %}
+	</section>
+{% endif %}

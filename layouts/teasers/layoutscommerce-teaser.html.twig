@@ -1,0 +1,27 @@
+{% if content %}
+	<div {{attributes.addClass('manomano__productteaser')}}>
+		{% if content.images %}
+			<div {{ region_attributes.images.addClass('manomano__productteaser--images') }}>
+				{% if content.images.layout_builder_add_block %}
+					{{ content.images }}
+				{% else %}
+					{% set keySearch = {begin:1, number:1} %}
+					{{ content.images|layout_value_img(keySearch) }}
+				{% endif %}
+			</div>
+		{% endif %}
+		{% if content.title %}
+			<h3 {{ region_attributes.title.addClass('manomano__productteaser--title') }}>
+				{{content.title}}
+			</h3>
+		{% endif %}
+		<div class="text-help">
+			{{" à partir de "|trans}}
+		</div>
+		{% if content.price %}
+			<div {{ region_attributes.price.addClass('manomano__productteaser--price') }}>
+				{{content.price}}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}
