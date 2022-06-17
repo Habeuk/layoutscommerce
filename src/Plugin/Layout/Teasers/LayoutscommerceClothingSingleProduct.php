@@ -11,7 +11,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *
  * @Layout(
  *   id = "layoutscommerceclothing_single_product",
- *   label = @Translation("  commerce clothing teaser "),
+ *   label = @Translation(" Commerce clothing teaser "),
  *   category = @Translation("layoutscommerce"),
  *   path = "layouts/teasers",
  *   template = "layoutscommerceclothing-single-product",
