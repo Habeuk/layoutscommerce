@@ -1,0 +1,4 @@
+services:
+  layoutscommerce.product_variation:
+    class: Drupal\layoutscommerce\Services\LayoutscommerceProductVariation
+    arguments: ['@commerce_price.currency_formatter']

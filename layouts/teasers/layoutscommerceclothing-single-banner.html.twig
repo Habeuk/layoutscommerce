@@ -1,0 +1,72 @@
+{% if content %}
+	<div {{attributes.addClass('clothing-single-banner')}}>
+		<div class="row">
+			<div class="col-md-6 div-center">
+				{% if content.images %}
+					<div {{region_attributes.images.addClass(['images','sb-img'])}}>
+						{% if content.images.layout_builder_add_block %}
+							{{ content.images }}
+						{% else %}
+							{% set keySearch = {begin:1, number:1} %}
+							{{ content.images|layout_value_img(keySearch) }}
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-md-6 div-center">
+				<div class="brand-content">
+					<div class="brand-text">
+						{% if content.categories %}
+							<div {{region_attributes.categories.addClass(['categories','sm-text'])}}>
+								{{content.categories}}
+							</div>
+						{% endif %}
+						{% if content.title %}
+							<h4 {{region_attributes.title.addClass(['title'])}}>
+								{{content.title}}
+							</h4>
+						{% endif %}
+						{% if content.price %}
+							<div {{region_attributes.price.addClass(['price'])}}>
+								{{content.price}}
+							</div>
+						{% endif %}
+						{% if content.description %}
+							<div {{region_attributes.description.addClass(['description','desc'])}}>
+								{% set content_desc %}
+								{{ content.description|layout_value }}
+								{% endset %}
+								{% set content_desc2 %}
+								{{content_desc|trim|striptags }}
+								{% endset %}
+								{{ (content_desc2|length > 150 ? content_desc2|slice(0, 150) ~ '…' : content_desc2)  }}
+							</div>
+						{% endif %}
+						<div class="clothing-four-btn">
+							{% if content.icon_add_to_cart %}
+								<div {{region_attributes.icon_add_to_cart.addClass(['icon_add_to_cart','btn-carre'])}}>
+									{{ content.icon_add_to_cart }}
+								</div>
+							{% endif %}
+							{% if content.icon_wishlist %}
+								<div {{region_attributes.icon_wishlist.addClass(['icon_wishlist','btn-carre'])}}>
+									{{ content.icon_wishlist }}
+								</div>
+							{% endif %}
+							{% if content.icon_compare %}
+								<div {{region_attributes.icon_compare.addClass(['icon_compare','btn-carre'])}}>
+									{{ content.icon_compare }}
+								</div>
+							{% endif %}
+							{% if content.icon_quick_wiew %}
+								<div {{region_attributes.icon_quick_wiew.addClass(['icon_quick_wiew','btn-carre'])}}>
+									{{ content.icon_quick_wiew }}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endif %}

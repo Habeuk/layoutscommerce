@@ -11,7 +11,7 @@ use Drupal\formatage_models\Plugin\Layout\Pages\FormatageModelsPages;
  *
  * @Layout(
  *  id = "layoutscommerce_manomano",
- *  label = @Translation(" Page commerce manomano 2022"),
+ *  label = @Translation(" Commerce manomano 2022"),
  *  category = @Translation("layoutscommerce"),
  *  path = "layouts/pages",
  *  template = "layoutscommerce-manomano",
@@ -72,7 +72,7 @@ class layoutscommerceManomano extends FormatageModelsPages {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/pages/formatage-models-contact-page.png");
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/pages/layoutscommerce-manomano.png");
   }
   
   /**

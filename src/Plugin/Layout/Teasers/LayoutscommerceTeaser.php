@@ -49,7 +49,7 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'formatage_models') . "/icones/teasers/formatage-models-teaser-smal.png");
+    $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/teasers/layoutscommerce-teaser.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
   
@@ -96,16 +96,18 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
       // Si l'id du produit existe on le surcharge.
       if ($product_id) {
         $productVariation = $product->getDefaultVariation();
-        /**
-         *
-         * @var \Drupal\commerce_price\Price $price
-         */
-        $price = $productVariation->getPrice();
-        $build['price'][] = [
-          '#type' => 'html_tag',
-          '#tag' => 'div',
-          '#value' => $this->currency_formatter->format($price->getNumber(), $price->getCurrencyCode())
-        ];
+        if ($productVariation) {
+          /**
+           *
+           * @var \Drupal\commerce_price\Price $price
+           */
+          $price = $productVariation->getPrice();
+          $build['price'][] = [
+            '#type' => 'html_tag',
+            '#tag' => 'div',
+            '#value' => $this->currency_formatter->format($price->getNumber(), $price->getCurrencyCode())
+          ];
+        }
       }
     }
   }

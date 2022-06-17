@@ -1,0 +1,77 @@
+{% if content %}
+	<setion {{attributes.addClass('clothing-bloc-slide')}}>
+		<div class="clothing-bloc-slide--container">
+			<div class="img-bloc-slide row">
+				<div class=" col-lg-6 col-md-6 ">
+					{% if content.image %}
+						<div {{region_attributes.image.addClass('img-bloc')}}>
+							{% if content.image.layout_builder_add_block %}
+								{{ content.image }}
+							{% else %}
+								{% set keySearch = {begin:1, number:1} %}
+								{{ content.image|layout_value_img(keySearch) }}
+							{% endif %}
+						</div>
+					{% endif %}
+				</div>
+				<div class=" col-lg-6 col-md-6 ">
+					<div class="brand-content">
+						<div class="brand-text">
+							{% if content.categorie %}
+								<div {{region_attributes.categorie.addClass('sm-text')}}>
+									{{ content.categorie }}
+								</div>
+							{% endif %}
+							{% if content.title %}
+								<div {{region_attributes.title.addClass('title')}}>
+									{{ content.title }}
+								</div>
+							{% endif %}
+							{% if content.price %}
+								<div {{region_attributes.price.addClass('price')}}>
+									{{ content.price }}
+								</div>
+							{% endif %}
+							{% if content.sub_titre %}
+								<div {{region_attributes.sub_titre.addClass(['desc','sub_titre'])}}>
+									{% set content_desc %}
+									{{ content.sub_titre|layout_value }}
+									{% endset %}
+									{% set content_desc2 %}
+									{{content_desc|trim|striptags }}
+									{% endset %}
+									{{ (content_desc2|length > 150 ? content_desc2|slice(0, 150) ~ '…' : content_desc2)  }}
+								</div>
+							{% endif %}
+							<div class="clothing-four-btn">
+								{% if content.icon_add_to_cart %}
+									<div {{region_attributes.icon_add_to_cart.addClass(['icon_add_to_cart','btn-carre'])}}>
+										{{ content.icon_add_to_cart }}
+									</div>
+								{% endif %}
+								{% if content.icon_wishlist %}
+									<div {{region_attributes.icon_wishlist.addClass(['icon_wishlist','btn-carre'])}}>
+										{{ content.icon_wishlist }}
+									</div>
+								{% endif %}
+								{% if content.icon_compare %}
+									<div {{region_attributes.icon_compare.addClass(['icon_compare','btn-carre'])}}>
+										{{ content.icon_compare }}
+									</div>
+								{% endif %}
+								{% if content.icon_quick_wiew %}
+									<div {{region_attributes.icon_quick_wiew.addClass(['icon_quick_wiew','btn-carre'])}}>
+										{{ content.icon_quick_wiew }}
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{% if content.end_offre_date %}
+						{{content.end_offre_date}}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
