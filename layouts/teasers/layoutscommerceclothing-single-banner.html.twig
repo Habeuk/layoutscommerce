@@ -45,21 +45,22 @@
 						<div class="clothing-four-btn">
 							{% if content.icon_add_to_cart %}
 								<div {{region_attributes.icon_add_to_cart.addClass(['icon_add_to_cart','btn-carre'])}}>
+									<div class="bc-tooltip"> Ajouter au panier </div>
 									{{ content.icon_add_to_cart }}
 								</div>
 							{% endif %}
 							{% if content.icon_wishlist %}
-								<div {{region_attributes.icon_wishlist.addClass(['icon_wishlist','btn-carre'])}}>
+								<div {{region_attributes.icon_wishlist.addClass(['icon_wishlist','btn-carre','d-none'])}}>
 									{{ content.icon_wishlist }}
 								</div>
 							{% endif %}
 							{% if content.icon_compare %}
-								<div {{region_attributes.icon_compare.addClass(['icon_compare','btn-carre'])}}>
+								<div {{region_attributes.icon_compare.addClass(['icon_compare','btn-carre','d-none'])}}>
 									{{ content.icon_compare }}
 								</div>
 							{% endif %}
 							{% if content.icon_quick_wiew %}
-								<div {{region_attributes.icon_quick_wiew.addClass(['icon_quick_wiew','btn-carre'])}}>
+								<div {{region_attributes.icon_quick_wiew.addClass(['icon_quick_wiew','btn-carre','d-none'])}}>
 									{{ content.icon_quick_wiew }}
 								</div>
 							{% endif %}
