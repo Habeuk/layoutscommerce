@@ -138,38 +138,38 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
         'fields' => [
           'title' => [
             'text_html' => [
-              'label': 'title',
-              'value': 'Quisque fringilla'
+              'label'=> 'title',
+              'value'=> 'Quisque fringilla'
             ]
           ],
           'description' => [
             'text_html' => [
-              'label': 'Description',
-              'value': 'Product build to show how fermentted slowly down of another one column'
+              'label'=> 'Description',
+              'value'=> 'Product build to show how fermentted slowly down of another one column'
             ]
           ],
           'price' => [
             'text_html' => [
-              'label': 'price',
-              'value': '$222'
+              'label'=> 'price',
+              'value'=> '$222'
             ]
           ],
           'reduction' => [
             'text_html' => [
-              'label': 'reduction',
-              'value': '-10%'
+              'label'=> 'reduction',
+              'value'=> '-10%'
             ]
           ],
           'old_price' => [
             'text_html' => [
-              'label': 'Ancien Prix',
-              'value': '$422'
+              'label'=> 'Ancien Prix',
+              'value'=> '$422'
             ]
           ],
           'categories' => [
             'text_html' => [
-              'label': 'categories',
-              'value': 'New'
+              'label'=> 'categories',
+              'value'=> 'New'
             ]
           ],   
         ]
