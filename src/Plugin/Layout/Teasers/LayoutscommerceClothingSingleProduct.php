@@ -26,6 +26,15 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *     "title" = {
  *       "label" = @Translation(" Titre "),
  *     },
+ *     "description" = {
+ *       "label" = @Translation(" description "),
+ *     },
+ *     "old_price" = {
+ *       "label" = @Translation(" old_price "),
+ *     },
+ *     "reduction" = {
+ *       "label" = @Translation(" reduction "),
+ *     },
  *     "price" = {
  *       "label" = @Translation(" price ")
  *     },
@@ -78,7 +87,7 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
       'infos' => [
         'builder-form' => true,
         'info' => [
-          'title' => 'Texte information',
+          'title' => 'Icon information',
           'loader' => 'static'
         ],
         'fields' => [
@@ -118,6 +127,51 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
               'label' => ' icon_quick_wiew '
             ]
           ]
+        ]
+      ],
+      'textes' => [
+        'builder-form' => true,
+        'info' => [
+            'title' => 'Textes information',
+            'loader' => 'static'
+        ],
+        'fields' => [
+          'title' => [
+            'text_html' => [
+              'label': 'title',
+              'value': 'Quisque fringilla'
+            ]
+          ],
+          'description' => [
+            'text_html' => [
+              'label': 'Description',
+              'value': 'Product build to show how fermentted slowly down of another one column'
+            ]
+          ],
+          'price' => [
+            'text_html' => [
+              'label': 'price',
+              'value': '$222'
+            ]
+          ],
+          'reduction' => [
+            'text_html' => [
+              'label': 'reduction',
+              'value': '-10%'
+            ]
+          ],
+          'old_price' => [
+            'text_html' => [
+              'label': 'Ancien Prix',
+              'value': '$422'
+            ]
+          ],
+          'categories' => [
+            'text_html' => [
+              'label': 'categories',
+              'value': 'New'
+            ]
+          ],   
         ]
       ]
     ] + parent::defaultConfiguration();

@@ -6,6 +6,11 @@
 					{{content.categories}}
 				</div>
 			{% endif %}
+			{% if content.reduction|has_value %}
+				<div {{ region_attributes.reduction.addClass(['badge','reduction','badge--reduction']) }}>
+					{{content.reduction}}
+				</div>
+			{% endif %}
 			{% if content.images %}
 				<div {{ region_attributes.images.addClass('images') }}>
 					{% if content.images.layout_builder_add_block %}
@@ -25,7 +30,9 @@
 			<div class="clothing-four-btn">
 				{% if content.icon_add_to_cart %}
 					<div {{region_attributes.icon_add_to_cart.addClass(['icon_add_to_cart','btn-carre'])}}>
-						<div class="bc-tooltip"> Ajouter au panier </div>
+						<div class="bc-tooltip">
+							Ajouter au panier
+						</div>
 						{{ content.icon_add_to_cart }}
 					</div>
 				{% endif %}
@@ -51,11 +58,21 @@
 				{{content.title}}
 			</h4>
 		{% endif %}
+		{% if content.description %}
+			<div {{region_attributes.description.addClass(['description','csp-desc'])}}>
+				{{content.description}}
+			</div>
+		{% endif %}
 		<div class="price-rating d-flex justify-content-between">
 			<div class="d-flex">
 				{% if content.price %}
 					<div {{region_attributes.price.addClass(['price'])}}>
 						{{content.price}}
+					</div>
+				{% endif %}
+				{% if content.old_price %}
+					<div {{region_attributes.old_price.addClass(['price','price price--old'])}}>
+						{{content.old_price}}
 					</div>
 				{% endif %}
 			</div>
