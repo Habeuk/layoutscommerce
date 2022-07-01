@@ -25,6 +25,7 @@ function layoutscommerce_theme() {
   return $hooks;
 }
 
+
 /**
  * Implements hook_entity_prepare_view().
  */
