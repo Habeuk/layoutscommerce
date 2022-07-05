@@ -98,10 +98,10 @@ class LayoutscommerceProductVariation {
       $product = $fiedProduct['content']['#object'];
       if ($product) {
         $this->product_variation = $product->getDefaultVariation();
-        return true;
+        if ($this->product_variation)
+          return true;
       }
     }
-    
     return false;
   }
   
