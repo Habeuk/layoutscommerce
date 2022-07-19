@@ -1,0 +1,61 @@
+{% if content %}
+	<div {{attributes.addClass(['il-hori-menu-card','aos-init']).setAttribute('datas-aos','fade-up').setAttribute('data-aos-duration','600').setAttribute('data-aos-delay','200')}}>
+		{% if content.images %}
+			<div {{region_attributes.images.addClass(['img-card'])}}>
+				{{content.images}}
+				{% if content.decouvrir_text|has_value %}
+					<div class="detail-card">
+						<span>
+							<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512">
+								<path d="M279.6 160.4C282.4 160.1 285.2 160 288 160C341 160 384 202.1 384 256C384 309 341 352 288 352C234.1 352 192 309 192 256C192 253.2 192.1 250.4 192.4 247.6C201.7 252.1 212.5 256 224 256C259.3 256 288 227.3 288 192C288 180.5 284.1 169.7 279.6 160.4zM480.6 112.6C527.4 156 558.7 207.1 573.5 243.7C576.8 251.6 576.8 260.4 573.5 268.3C558.7 304 527.4 355.1 480.6 399.4C433.5 443.2 368.8 480 288 480C207.2 480 142.5 443.2 95.42 399.4C48.62 355.1 17.34 304 2.461 268.3C-.8205 260.4-.8205 251.6 2.461 243.7C17.34 207.1 48.62 156 95.42 112.6C142.5 68.84 207.2 32 288 32C368.8 32 433.5 68.84 480.6 112.6V112.6zM288 112C208.5 112 144 176.5 144 256C144 335.5 208.5 400 288 400C367.5 400 432 335.5 432 256C432 176.5 367.5 112 288 112z"/>
+							</svg>
+						</span>
+						<div class="text">
+							{{content.decouvrir_text}}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+		<div class="ilm-content">
+			{% if content.title %}
+				<h4 {{region_attributes.title.addClass(['ilc-title'])}}>
+					{{ content.title }}
+				</h4>
+			{% endif %}
+			{% if content.price %}
+				<h5 {{region_attributes.price.addClass(['ilc-price'])}}>
+					{{ content.price }}
+				</h5>
+			{% endif %}
+
+
+			<div class="il-action-card">
+				{% if content.add_to_cart|has_value %}
+					<div class="bouton-quantity-card">
+						<button class="ilac-btn" data-type="minus">
+							<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512">
+								<path d="M400 288h-352c-17.69 0-32-14.32-32-32.01s14.31-31.99 32-31.99h352c17.69 0 32 14.3 32 31.99S417.7 288 400 288z"/>
+							</svg>
+						</button>
+						<input type="number" value="02" min="2" max="5" data-input="quantity">
+						<button class="ilac-btn" data-type="plus">
+							<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512">
+								<path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/>
+							</svg>
+						</button>
+					</div>
+					<div class="card-btn card-btn--sm card-btn--scale-up">
+						{{content.has_value}}
+					</div>
+				{% endif %}
+				{% if content.button_options|has_value %}
+					<div {{region_attributes.button_options.addClass(['card-btn','card-btn--nm'])}}>
+						{{ content.button_options }}
+					</div>
+				{% endif %}
+			</div>
+
+		</div>
+	</div>
+{% endif %}
