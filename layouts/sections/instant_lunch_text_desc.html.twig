@@ -4,9 +4,9 @@
 			<div class="row justify-content-center align-items-center">
 				<div class="col-md-5">
 					<div class="text-side">
-						{% if content.title %}
-							<h1 {{region_attributes.title.addClass('il-big-title')}}>
-								{{content.title}}
+						{% if content.section_title %}
+							<h1 {{region_attributes.section_title.addClass('il-big-title')}}>
+								{{content.section_title}}
 							</h1>
 						{% endif %}
 					</div>
@@ -14,9 +14,9 @@
 				<div class="col-md-7">
 					<div class="text-side">
 
-						<div {{region_attributes.description.addClass('description')}}>
-							{% if content.description %}
-								{{content.description}}
+						<div {{region_attributes.section_desc.addClass('description')}}>
+							{% if content.section_desc %}
+								{{content.section_desc}}
 							{% endif %}
 							{% if content.lien_plus %}
 								<div {{region_attributes.lien_plus.addClass('mt-3')}}>
