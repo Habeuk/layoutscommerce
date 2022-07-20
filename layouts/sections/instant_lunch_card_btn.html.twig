@@ -1,0 +1,11 @@
+{% if content %}
+<div class="container">
+    <div {{ attributes.addClass(['row ','my-5','pb-5','justify-content-center'])}}>
+        {% if content.lunch_card_btn_text %}
+            <div {{ region_attributes.lunch_card_btn_text.addClass(['card-btn ','card-btn--scale-down']) }}>
+                {{ content.lunch_card_btn_text }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
