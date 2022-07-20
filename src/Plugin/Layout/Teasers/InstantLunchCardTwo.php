@@ -1,10 +1,11 @@
 <?php
 
-namespace Drupal\layoutscommerce\Plugin\Layout\Teasers;
+namespace Drupal\fast_models\Plugin\Layout\Teasers;
 
-use Drupal\layoutscommerce\Plugin\Layout\LayoutscommerceTeaser;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
+
 
 /**
  * A very advanced custom layout.
@@ -26,7 +27,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   }
  * )
  */
-class InstantLunchCardTwo extends LayoutscommerceTeaser {
+class InstantLunchCardTwo extends FormatageModelsTeasers {
   /**
    *
    * {@inheritdoc}
@@ -48,8 +49,6 @@ class InstantLunchCardTwo extends LayoutscommerceTeaser {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
     return $build;
   }
   

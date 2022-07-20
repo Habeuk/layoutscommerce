@@ -1,10 +1,11 @@
 <?php
 
-namespace Drupal\layoutscommerce\Plugin\Layout\Sections;
+
+namespace Drupal\fast_models\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
-use Drupal\layoutscommerce\Plugin\Layout\LayoutscommerceSection;
+use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
 
 /**
  * 
@@ -37,7 +38,7 @@ use Drupal\layoutscommerce\Plugin\Layout\LayoutscommerceSection;
  * )
  * 
  */
-class LayoutsCommerceIntantLunchMenu extends LayoutscommerceSection 
+class LayoutsCommerceIntantLunchMenu extends FormatageModelsSection 
 {
     /**
     *

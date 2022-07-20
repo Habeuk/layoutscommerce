@@ -1,10 +1,9 @@
 <?php
+namespace Drupal\fast_models\Plugin\Layout\Teasers;
 
-namespace Drupal\layoutscommerce\Plugin\Layout\Teasers;
-
-use Drupal\layoutscommerce\Plugin\Layout\LayoutscommerceTeaser;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
 
 /**
  * A very advanced custom layout.
@@ -29,7 +28,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   }
  * )
  */
-class InstantLunchSectionTitle extends LayoutscommerceTeaser {
+class InstantLunchSectionTitle extends FormatageModelsTeasers {
   /**
    *
    * {@inheritdoc}
@@ -51,8 +50,7 @@ class InstantLunchSectionTitle extends LayoutscommerceTeaser {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
+
     return $build;
   }
   

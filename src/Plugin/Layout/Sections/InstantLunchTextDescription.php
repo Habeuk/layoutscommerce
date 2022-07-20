@@ -30,7 +30,7 @@ use Drupal\layoutscommerce\Plugin\Layout\LayoutscommerceSection;
  *   }
  * )
  */
-class InstantLunchTextDescription extends LayoutscommerceSection {
+class InstantLunchTextDescription extends FormatageModelsSection {
   
   /**
    *
