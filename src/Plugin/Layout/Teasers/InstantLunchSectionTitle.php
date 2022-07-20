@@ -15,7 +15,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   category = @Translation("instantlunch"),
  *   path = "layouts/teasers",
  *   template = "instantlunch-section-title",
- *   library = "instantlunch/instantlunch-section-title",
+ *   library = "layoutscommerce/instantlunch-section-title",
  *   regions = {
  *     "big_title" = {
  *       "label" = @Translation(" big_title "),

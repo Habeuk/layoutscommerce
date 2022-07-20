@@ -27,7 +27,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *       "label" = @Translation(" price ")
  *     },
  *     "menu_desc_title" = {
- *       "label" = @Translation(" price ")
+ *       "label" = @Translation(" menu_desc_title ")
  *     },
  *     "menu_desc_content" = {
  *       "label" = @Translation(" menu_desc_content ")

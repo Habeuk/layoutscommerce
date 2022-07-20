@@ -15,7 +15,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  *   category = @Translation("instantlunch"),
  *   path = "layouts/teasers",
  *   template = "instantlunch-card-two",
- *   library = "instantlunch/instantlunch-card-two",
+ *   library = "layoutscommerce/instantlunch-card-two",
  *   regions = {
  *     "images" = {
  *       "label" = @Translation(" Images "),
