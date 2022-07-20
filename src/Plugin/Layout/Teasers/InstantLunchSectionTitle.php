@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\fast_models\Plugin\Layout\Teasers;
+namespace Drupal\layoutscommerce\Plugin\Layout\Teasers;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;

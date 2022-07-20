@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\fast_models\Plugin\Layout\Sections;
+namespace Drupal\layoutscommerce\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
