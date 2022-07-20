@@ -109,21 +109,20 @@ class LayoutsCommerceIntantLunchMenu extends LayoutscommerceSection
                         ]
                     ],
                     'i_l_menu_image' => [
-                        'text_html' => [
-                            'label' => '',
-                            'value' => ''
+                        'img_bg' => [
+                            'label' => 'BG img for menu'
                         ]
                     ],
                     'i_l_menu_date_text' => [
                         'text_html' => [
-                            'label' => '',
-                            'value' => ''
+                            'label' => 'Date text',
+                            'value' => 'Retrouvez nos menus de la semaine ci-dessous : '
                         ]
                     ],
                     'i_l_menu_date' => [
                         'text_html' => [
-                            'label' => '',
-                            'value' => ''
+                            'label' => 'Date',
+                            'value' => 'du 18 au 24 juillet'
                         ]
                     ]
                 ]
