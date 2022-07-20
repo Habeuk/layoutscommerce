@@ -55,8 +55,7 @@ class InstantLunchMenuSection extends LayoutscommerceSection {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
+   
     return $build;
   }
   

@@ -58,9 +58,7 @@ class LayoutsCommerceIntantLunchMenu extends LayoutscommerceSection
     public function build(array $regions) {
         // TODO Auto-generated method stub
         $build = parent::build($regions);
-        FormatageModelsThemes::formatSettingValues($build);
-        $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-        $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
+        FormatageModelsThemes::formatSettingValues($build); 
         return $build;
     }
 
