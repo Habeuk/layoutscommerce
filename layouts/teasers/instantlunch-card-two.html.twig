@@ -1,0 +1,16 @@
+{% if content %}
+	<div {{attributes.addClass(['il-card-two','aos-init']).setAttribute('datas-aos','fade-up').setAttribute('data-aos-duration','600').setAttribute('data-aos-delay','200')}}>
+		<div class="img-card">
+			{% if content.images %}
+				{{content.images}}
+			{% endif %}
+
+			<div class="ilm-content">
+				{% if content.title %}
+					<h4 {{region_attributes.title.addClass('ict-title')}}>{{content.title}}</h4>
+				{% endif %}
+			</div>
+
+		</div>
+	</div>
+{% endif %}
