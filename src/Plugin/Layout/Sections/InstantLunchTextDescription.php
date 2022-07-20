@@ -91,8 +91,8 @@ class InstantLunchTextDescription extends LayoutscommerceSection {
           ],
           'lien_plus' => [
             'text_html' => [
-              'label' => 'text Lire plus'
-              'value' => 'Lire plus',
+              'label' => 'text Lire plus',
+              'value' => 'Lire plus'
             ]
           ]
         ]
