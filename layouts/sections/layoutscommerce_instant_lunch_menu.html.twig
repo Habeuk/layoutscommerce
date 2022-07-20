@@ -1,0 +1,39 @@
+{% if content %}
+<section {{ attributes.addClass('il-top-img-section ') }}>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="text-side">
+                    {% if content.i_l_menu_title %}
+                    <h1 {{ region_attributes.i_l_menu_title.addClass('il-big-title') }}>
+                        {{ content.i_l_menu_title }}
+                    </h1>
+                    {% endif %}
+                    {% if content.i_l_menu_description %}
+                    <div {{ region_attributes.i_l_menu_description.addClass('description') }}>
+                        {{ content.i_l_menu_description }}
+                    </div>
+                    {% endif %}
+                    <div class="day-desc">
+                        {% if content %}
+                        Retrouvez nos menus de la semaine ci-dessous : 
+                        <span class="il-colored">du 18 au 24
+                            juillet
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-none d-sm-block">
+                {% if content %}
+                <div class="img-side"
+                     style="background-image: url(https://instant-lunch.store/wp-content/uploads/2022/06/Livraison-plateau-repas-plan-de-travail.png);">
+                    <div></div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endif %}
