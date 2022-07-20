@@ -1,0 +1,36 @@
+{% if content %}
+	<section {{attributes.addClass('il-text-description')}}>
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-md-5">
+					<div class="text-side">
+						{% if content.title %}
+							<h1 {{region_attributes.title.addClass('il-big-title')}}>
+								{{content.title}}
+							</h1>
+						{% endif %}
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="text-side">
+
+						<div {{region_attributes.description.addClass('description')}}>
+							{% if content.description %}
+								{{content.description}}
+							{% endif %}
+							{% if content.lien_plus %}
+								<div {{region_attributes.lien_plus.addClass('mt-3')}}>
+									{{content.lien_plus}}
+								</div>
+							{% endif %}
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+
+{% endif %}
