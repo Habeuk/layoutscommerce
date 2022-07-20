@@ -11,7 +11,7 @@ use Drupal\layoutscommerce\Plugin\Layout\LayoutscommerceSection;
  *
  * @Layout(
  *   id = "instant_lunch_menu_section",
- *   label = @Translation(" Instant lunch text desc"),
+ *   label = @Translation(" Instant lunch menu section"),
  *   category = @Translation("instantlunch"),
  *   path = "layouts/sections",
  *   template = "instant_lunch_menu_section",
