@@ -1,5 +1,12 @@
 {% if content %}
-<section {{ attributes.addClass('il-top-img-section ') }}>
+
+{% if content.i_l_menu_image.layout_builder_add_block %}
+    {{ content.i_l_menu_image }}
+{% endif %}
+{% if content.i_l_menu_image|layout_bg_img %}
+		{% set attributes = attributes.merge(content.i_l_menu_image|layout_bg_img) %}
+{% endif %}
+<section {{ attributes.addClass('il-top-img-section') }}>
     <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -14,7 +21,7 @@
                         {{ content.i_l_menu_description }}
                     </div>
                     {% endif %}
-                    <div class="day-desc">
+                    <div class="day-desc d-flex">
                         {% if content.i_l_menu_date_text %}
                             {{ content.i_l_menu_date_text }}
                         {% endif %}
@@ -25,19 +32,7 @@
                         {% endif %}
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 d-none d-sm-block">
-                {% if content.il_menu_bg.layout_builder_add_block %}
-                    {{ content.il_menu_bg }}
-                {% endif %}
-                {% if content.i_l_menu_image|layout_bg_img %}
-                    {% set region_attributes2=content.i_l_menu_image|layout_bg_img %}    
-                    <div {{ region_attributes2.i_l_menu_image.addClass('img-side') }}
-                        style="background-image: url(https://instant-lunch.store/wp-content/uploads/2022/06/Livraison-plateau-repas-plan-de-travail.png);">
-                        <div></div>
-                    </div>
-                {% endif %}
-            </div>
+            </div>            
         </div>
     </div>
 </section>
