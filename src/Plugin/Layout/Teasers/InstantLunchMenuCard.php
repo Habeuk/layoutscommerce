@@ -68,7 +68,7 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
     $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
+    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build, 'add_to_cart', $build['add_to_cart']);
     return $build;
   }
   
@@ -103,13 +103,13 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
               'value' => '18.98€ HT'
             ]
           ],
-           'menu_desc_title' => [
+          'menu_desc_title' => [
             'text_html' => [
               'label' => 'menu_desc_title',
               'value' => 'livré chaud'
             ]
           ],
-           'menu_desc_content' => [
+          'menu_desc_content' => [
             'text_html' => [
               'label' => 'menu_desc_content',
               'value' => ' <div class="ilc-ul__item">
@@ -139,13 +139,13 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
                                     </div>'
             ]
           ],
-           'desc_img_title' => [
+          'desc_img_title' => [
             'text_html' => [
               'label' => 'desc_img_title',
               'value' => 'Inclus'
             ]
           ],
-           'desc_img_content' => [
+          'desc_img_content' => [
             'text_html' => [
               'label' => 'desc_img_content',
               'value' => '<img 
@@ -159,9 +159,9 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
           'add_to_cart' => [
             'text_html' => [
               'label' => 'title add to cart',
-              'value' => '<a href="#">Ajouter au panier</a>'
+              'value' => '<a href="#"> Ajouter au panier </a>'
             ]
-          ],
+          ]
         ]
       ]
     ] + parent::defaultConfiguration();

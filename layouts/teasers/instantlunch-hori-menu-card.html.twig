@@ -45,12 +45,12 @@
 							</svg>
 						</button>
 					</div>
-					<div class="card-btn card-btn--sm card-btn--scale-up">
+					<div class="card-btn card-btn--sm card-btn--scale-up commerceformatage-button-add-to-cart d-flex px-3">
 						{{content.add_to_cart}}
 					</div>
 				{% endif %}
 				{% if content.button_options|has_value %}
-					<div {{region_attributes.button_options.addClass(['card-btn','card-btn--nm'])}}>
+					<div {{region_attributes.button_options.addClass(['card-btn', 'card-btn--nm'])}}>
 						{{ content.button_options }}
 					</div>
 				{% endif %}

@@ -39,6 +39,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * )
  */
 class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
+  
   /**
    *
    * {@inheritdoc}
@@ -61,7 +62,8 @@ class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
     $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
+    // $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'],
+    // $build, 'add_to_cart', $build['add_to_cart']);
     return $build;
   }
   
@@ -102,7 +104,7 @@ class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
               'value' => 'Découvrir le produit'
             ]
           ],
-           'button_options' => [
+          'button_options' => [
             'text_html' => [
               'label' => 'titre button options',
               'value' => '<a href="#">Choix des options</a>'
@@ -113,7 +115,7 @@ class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
               'label' => 'title add to cart',
               'value' => '<a href="#">Ajouter au panier</a>'
             ]
-          ],
+          ]
         ]
       ]
     ] + parent::defaultConfiguration();

@@ -51,9 +51,9 @@ class LayoutscommerceProductVariation {
    * Compliquer d'obtenir le formulaire, on va juste transferer les données de
    * references du produit et laisser JS, faire le reste du TAF.
    */
-  function getRenderAddToCart($fiedProduct, array &$build, $field_variation = 'price') {
+  function getRenderAddToCart($fiedProduct, array &$build, $region_name = 'icon_add_to_cart', $regionContent = null) {
     if ($this->getVariant($fiedProduct)) {
-      $build['icon_add_to_cart'][] = [
+      $build[$region_name] = [
         '#type' => 'html_tag',
         '#tag' => 'div',
         '#attributes' => [
@@ -72,6 +72,7 @@ class LayoutscommerceProductVariation {
             ]
           ]
         ],
+        $regionContent,
         [
           '#type' => 'html_tag',
           '#tag' => 'i',
@@ -91,6 +92,7 @@ class LayoutscommerceProductVariation {
   protected function getVariant($fiedProduct) {
     $fiedProduct = reset($fiedProduct);
     if (!empty($fiedProduct['content']['#object'])) {
+      
       /**
        *
        * @var Product $product
@@ -98,9 +100,11 @@ class LayoutscommerceProductVariation {
       $product = $fiedProduct['content']['#object'];
       if ($product) {
         $this->product_variation = $product->getDefaultVariation();
+        // dump($this->product_variation);
         if ($this->product_variation)
           return true;
       }
+      \Drupal::messenger()->addWarning('impossible de terminer le produit');
     }
     return false;
   }
