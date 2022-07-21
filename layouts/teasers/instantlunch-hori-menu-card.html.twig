@@ -1,5 +1,5 @@
 {% if content %}
-	<div {{attributes.addClass(['il-hori-menu-card','aos-init']).setAttribute('datas-aos','fade-up').setAttribute('data-aos-duration','600').setAttribute('data-aos-delay','200')}}>
+	<div {{attributes.addClass(['il-hori-menu-card','aos-init','aos-animate']).setAttribute('datas-aos','fade-up').setAttribute('data-aos-duration','600').setAttribute('data-aos-delay','200')}}>
 		{% if content.images %}
 			<div {{region_attributes.images.addClass(['img-card'])}}>
 				{{content.images}}
