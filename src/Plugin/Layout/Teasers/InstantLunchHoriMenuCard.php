@@ -62,8 +62,8 @@ class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
     $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    // $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'],
-    // $build, 'add_to_cart', $build['add_to_cart']);
+    if (!empty($build['add_to_cart'][0]))
+      $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build, 'add_to_cart', $build['add_to_cart']);
     return $build;
   }
   
