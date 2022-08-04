@@ -1,0 +1,2 @@
+import "@stephane888/wbu-atomique/scss/organisme/sections/theme_builder/market-place/product-block.scss";
+import "@stephane888/wbu-atomique/scss/organisme/sections/theme_builder/market-place/product-block.js";

@@ -1,0 +1,83 @@
+{% if content %}
+<div {{ attributes.addClass('product-block') }}>
+	<div class="container">
+		<!-- barner block -->
+		{% if content.marque|has_value %}
+		<div {{ region_attributes.marque.addClass(['product-ban']) }}>
+			{{ content.marque }}
+		</div>
+		{% endif %}
+		<div class="product-content">
+			<div class="row">
+				<!-- Block with relative products images -->
+				{% if content.images %}
+				<div class="col-md-12 col-xm-12 col-lg-6 image-content">
+					<div class="product-tager">
+						<div class="product-tags">
+							{% for item in content.categories|array_elements(region_attributes.categories.addClass('product-tag')) %}
+							{{ item }}
+							{% endfor %}
+						</div>
+						<div class="product-love-icons">
+							{% for item in content.icones|array_elements(region_attributes.icones.addClass('product-love-icon')) %}
+							{{ item }}
+							{% endfor %}
+						</div>
+					</div>
+
+					{{ content.images }}
+				</div>
+				{% endif %}
+				<!-- block with product caractéristics -->
+				<div class="col-md-12 col-xm-12 col-lg-6 desc-content">
+					<!-- product-description -->
+					<div class="product-description">
+						{% if content.titre %}
+						<h1
+							{{ region_attributes.titre.addClass('product-description__name') }}>
+							{{ content.titre }}
+						</h1>
+						{% endif %}
+						{% if content.sub_title %}
+						<div
+							{{ region_attributes.sub_title.addClass('product-description__subname') }}>
+							{{ content.sub_title }}
+						</div>
+						{% endif %}
+						{% if content.sub_title2 %}
+						<div
+							{{ region_attributes.sub_title2.addClass('product-description__subname') }}>
+							{{ content.sub_title2 }}
+						</div>
+						{% endif %}
+					</div>
+					{% if content.form_add_to_cart %}
+					<div
+						{{ region_attributes.form_add_to_cart.addClass('form_add_to_cart') }}>
+						{{ content.form_add_to_cart }}
+					</div>
+					{% endif %}
+					{% if content.block_infos1|has_value %}
+					<div
+						{{ region_attributes.block_infos1.addClass(['block_infos1','product-gift']) }}>
+						{{ content.block_infos1 }}
+					</div>
+					{% endif %}
+					{% if content.block_infos2|has_value %}
+    					<div class="product-zone">
+    						{{ content.block_infos2|array_elements(region_attributes.block_infos2.addClass(['block_infos2','product-zone__collect'])) }}
+    					</div>
+					{% endif %}
+					{% if content.products_add|has_value %}
+					<div
+						{{ region_attributes.products_add.addClass(['products_add','product-card__plus']) }}>
+						{{ content.products_add }}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endif %}

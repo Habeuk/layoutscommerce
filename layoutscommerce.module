@@ -16,12 +16,41 @@ use Drupal\commerce_product\Entity\Product;
  * Implements hook_theme().
  */
 function layoutscommerce_theme() {
+  //
   $hooks['layoutscommerce_product_teaser_view_style'] = [
     'preprocess functions' => [
       'template_preprocess_layoutscommerce_product_teaser_view_style'
     ],
     'file' => 'layoutscommerce.theme.inc'
   ];
+  //
+  $hooks['layoutscommerce_attribute_items'] = [
+    'variables' => [
+      'price' => NULL,
+      'small_info' => NULL,
+      'options' => NULL,
+      'items' => NULL,
+      'currency' => NULL
+    ],
+    'preprocess functions' => [
+      'template_preprocess_layoutscommerce_attribute_items'
+    ],
+    'file' => 'layoutscommerce.theme.inc'
+  ];
+  //
+  $hooks['layoutscommerce_comments'] = [
+    'variables' => [
+      'avis' => NULL,
+      'notes' => NULL,
+      'comments' => NULL,
+      'comment_form' => NULL
+    ],
+    'preprocess functions' => [
+      'template_preprocess_layoutscommerce_comments'
+    ],
+    'file' => 'layoutscommerce.theme.inc'
+  ];
+  //
   return $hooks;
 }
 
