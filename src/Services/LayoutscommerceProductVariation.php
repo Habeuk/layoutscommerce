@@ -12,17 +12,17 @@ class LayoutscommerceProductVariation {
    * @var ProductVariation
    */
   protected $product_variation = null;
-  
+
   /**
    *
    * @var CurrencyFormatter
    */
   protected $currency_formatter;
-  
+
   function __construct(CurrencyFormatter $CurrencyFormatter) {
     $this->currency_formatter = $CurrencyFormatter;
   }
-  
+
   /**
    * Permet d'obtenir le rendu du champs prix de la product variation.
    */
@@ -45,7 +45,7 @@ class LayoutscommerceProductVariation {
       }
     }
   }
-  
+
   /**
    * Permet d'obtenir le rendu du champs prix de la product variation.
    * Compliquer d'obtenir le formulaire, on va juste transferer les données de
@@ -88,11 +88,11 @@ class LayoutscommerceProductVariation {
       ];
     }
   }
-  
+
   protected function getVariant($fiedProduct) {
     $fiedProduct = reset($fiedProduct);
     if (!empty($fiedProduct['content']['#object'])) {
-      
+
       /**
        *
        * @var Product $product
@@ -104,10 +104,10 @@ class LayoutscommerceProductVariation {
         if ($this->product_variation)
           return true;
       }
-      \Drupal::messenger()->addWarning('impossible de terminer le produit');
+      \Drupal::messenger()->addWarning("La variation d'un ou de plusieurs produits n'existent pas ");
     }
     return false;
   }
-  
+
 }
 
