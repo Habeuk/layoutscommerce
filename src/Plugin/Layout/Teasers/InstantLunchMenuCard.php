@@ -45,7 +45,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * )
  */
 class InstantLunchMenuCard extends LayoutscommerceTeaser {
-
+  
   /**
    *
    * {@inheritdoc}
@@ -57,22 +57,21 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/teasers/il-menu-card.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
-
+  
   /**
    *
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
    */
-  // public function build(array $regions) {
-  // // TODO Auto-generated method stub
-  // $build = parent::build($regions);
-  // FormatageModelsThemes::formatSettingValues($build);
-  // $this->LayoutCommerceProductVariation->getRenderField($build['title'],
-  // $build);
-  // $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'],
-  // $build, 'add_to_cart', $build['add_to_cart']);
-  // return $build;
-  // }
+  public function build(array $regions) {
+    // TODO Auto-generated method stub
+    $build = parent::build($regions);
+    FormatageModelsThemes::formatSettingValues($build);
+    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
+    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build, 'add_to_cart', $build['add_to_cart']);
+    return $build;
+  }
+  
   function defaultConfiguration() {
     return [
       'load_libray' => false,
@@ -149,7 +148,7 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
           'desc_img_content' => [
             'text_html' => [
               'label' => 'desc_img_content',
-              'value' => '<img
+              'value' => '<img 
                                   src="https://i0.wp.com/instant-lunch.store/wp-content/uploads/2022/01/IsntantLunch_Picto_EauPainSet-02.png?resize=65%2C65&ssl=1" alt="">
                                     <img src="https://i0.wp.com/instant-lunch.store/wp-content/uploads/2022/01/IsntantLunch_Picto_EauPainSet-02.png?resize=65%2C65&ssl=1"
                                          alt="">
@@ -167,5 +166,5 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
       ]
     ] + parent::defaultConfiguration();
   }
-
+  
 }
