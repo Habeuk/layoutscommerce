@@ -27,6 +27,7 @@ class LayoutscommerceProductVariation {
    * Permet d'obtenir le rendu du champs prix de la product variation.
    */
   function getRenderField($fiedProduct, array &$build, $field_variation = 'price') {
+    return [];
     if ($this->getVariant($fiedProduct)) {
       if ($field_variation == 'price') {
         /**
@@ -52,6 +53,7 @@ class LayoutscommerceProductVariation {
    * references du produit et laisser JS, faire le reste du TAF.
    */
   function getRenderAddToCart($fiedProduct, array &$build, $region_name = 'icon_add_to_cart', $regionContent = null) {
+    return [];
     if ($this->getVariant($fiedProduct)) {
       $build[$region_name] = [
         '#type' => 'html_tag',

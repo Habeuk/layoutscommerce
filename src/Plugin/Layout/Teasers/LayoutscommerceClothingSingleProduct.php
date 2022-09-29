@@ -54,7 +54,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * )
  */
 class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -66,21 +66,22 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/teasers/layoutscommerceclothing-single-product.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
-  
+
   /**
    *
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
    */
-  public function build(array $regions) {
-    // TODO Auto-generated method stub
-    $build = parent::build($regions);
-    FormatageModelsThemes::formatSettingValues($build);
-    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
-    return $build;
-  }
-  
+  // public function build(array $regions) {
+  // // TODO Auto-generated method stub
+  // $build = parent::build($regions);
+  // FormatageModelsThemes::formatSettingValues($build);
+  // $this->LayoutCommerceProductVariation->getRenderField($build['title'],
+  // $build);
+  // $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'],
+  // $build);
+  // return $build;
+  // }
   function defaultConfiguration() {
     return [
       'load_libray' => false,
@@ -132,49 +133,49 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
       'textes' => [
         'builder-form' => true,
         'info' => [
-            'title' => 'Textes information',
-            'loader' => 'static'
+          'title' => 'Textes information',
+          'loader' => 'static'
         ],
         'fields' => [
           'title' => [
             'text_html' => [
-              'label'=> 'title',
-              'value'=> 'Quisque fringilla'
+              'label' => 'title',
+              'value' => 'Quisque fringilla'
             ]
           ],
           'description' => [
             'text_html' => [
-              'label'=> 'Description',
-              'value'=> 'Product build to show how fermentted slowly down of another one column'
+              'label' => 'Description',
+              'value' => 'Product build to show how fermentted slowly down of another one column'
             ]
           ],
           'price' => [
             'text_html' => [
-              'label'=> 'price',
-              'value'=> '$222'
+              'label' => 'price',
+              'value' => '$222'
             ]
           ],
           'reduction' => [
             'text_html' => [
-              'label'=> 'reduction',
-              'value'=> '-10%'
+              'label' => 'reduction',
+              'value' => '-10%'
             ]
           ],
           'old_price' => [
             'text_html' => [
-              'label'=> 'Ancien Prix',
-              'value'=> '$422'
+              'label' => 'Ancien Prix',
+              'value' => '$422'
             ]
           ],
           'categories' => [
             'text_html' => [
-              'label'=> 'categories',
-              'value'=> 'New'
+              'label' => 'categories',
+              'value' => 'New'
             ]
-          ],   
+          ]
         ]
       ]
     ] + parent::defaultConfiguration();
   }
-  
+
 }

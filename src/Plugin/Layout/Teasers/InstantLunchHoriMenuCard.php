@@ -39,7 +39,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * )
  */
 class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -51,22 +51,23 @@ class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/teasers/hori-menu-card.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
-  
+
   /**
    *
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
    */
-  public function build(array $regions) {
-    // TODO Auto-generated method stub
-    $build = parent::build($regions);
-    FormatageModelsThemes::formatSettingValues($build);
-    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    if (!empty($build['add_to_cart'][0]))
-      $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build, 'add_to_cart', $build['add_to_cart']);
-    return $build;
-  }
-  
+  // public function build(array $regions) {
+  // // TODO Auto-generated method stub
+  // $build = parent::build($regions);
+  // FormatageModelsThemes::formatSettingValues($build);
+  // $this->LayoutCommerceProductVariation->getRenderField($build['title'],
+  // $build);
+  // if (!empty($build['add_to_cart'][0]))
+  // $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'],
+  // $build, 'add_to_cart', $build['add_to_cart']);
+  // return $build;
+  // }
   function defaultConfiguration() {
     return [
       'load_libray' => false,
@@ -120,5 +121,5 @@ class InstantLunchHoriMenuCard extends LayoutscommerceTeaser {
       ]
     ] + parent::defaultConfiguration();
   }
-  
+
 }

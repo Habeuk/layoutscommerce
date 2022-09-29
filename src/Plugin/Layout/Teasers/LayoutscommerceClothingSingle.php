@@ -48,7 +48,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * )
  */
 class LayoutscommerceClothingSingle extends LayoutscommerceTeaser {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -60,21 +60,22 @@ class LayoutscommerceClothingSingle extends LayoutscommerceTeaser {
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/teasers/layoutscommerceclothing-single-banner.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
-  
+
   /**
    *
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
    */
-  public function build(array $regions) {
-    // TODO Auto-generated method stub
-    $build = parent::build($regions);
-    FormatageModelsThemes::formatSettingValues($build);
-    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
-    return $build;
-  }
-  
+  // public function build(array $regions) {
+  // // TODO Auto-generated method stub
+  // $build = parent::build($regions);
+  // FormatageModelsThemes::formatSettingValues($build);
+  // $this->LayoutCommerceProductVariation->getRenderField($build['title'],
+  // $build);
+  // $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'],
+  // $build);
+  // return $build;
+  // }
   function defaultConfiguration() {
     return [
       'load_libray' => false,
@@ -125,5 +126,5 @@ class LayoutscommerceClothingSingle extends LayoutscommerceTeaser {
       ]
     ] + parent::defaultConfiguration();
   }
-  
+
 }

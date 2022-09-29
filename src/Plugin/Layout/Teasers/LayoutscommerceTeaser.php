@@ -40,7 +40,7 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
    * @var CurrencyFormatter
    */
   protected $currency_formatter;
-  
+
   /**
    *
    * {@inheritdoc}
@@ -52,7 +52,7 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
     $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/teasers/layoutscommerce-teaser.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -62,20 +62,20 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
     $instance->currency_formatter = $container->get('commerce_price.currency_formatter');
     return $instance;
   }
-  
+
   /**
    *
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::build()
    */
-  public function build(array $regions) {
-    // TODO Auto-generated method stub
-    $build = parent::build($regions);
-    FormatageModelsThemes::formatSettingValues($build);
-    $this->addPriceInRegion($build['title'], $build);
-    return $build;
-  }
-  
+  // public function build(array $regions) {
+  // // TODO Auto-generated method stub
+  // $build = parent::build($regions);
+  // FormatageModelsThemes::formatSettingValues($build);
+  // $this->addPriceInRegion($build['title'], $build);
+  // return $build;
+  // }
+
   /**
    * On ne parvient pas encore a recuperé la variation par defaut pour un
    * produit injecté via view et LB.
@@ -85,7 +85,7 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
    */
   protected function addPriceInRegion($fiedProduct, &$build) {
     $fiedProduct = reset($fiedProduct);
-    
+
     if (!empty($fiedProduct['content']['#object'])) {
       /**
        *
@@ -111,7 +111,7 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
       }
     }
   }
-  
+
   /**
    *
    * {@inheritdoc}
@@ -122,5 +122,5 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
       'css' => ''
     ] + parent::defaultConfiguration();
   }
-  
+
 }
