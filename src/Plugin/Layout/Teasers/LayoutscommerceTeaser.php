@@ -105,7 +105,7 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
           $build['price'][] = [
             '#type' => 'html_tag',
             '#tag' => 'div',
-            '#value' => $this->currency_formatter->format($price->getNumber(), $price->getCurrencyCode())
+            '#value' => $price ? $this->currency_formatter->format($price->getNumber(), $price->getCurrencyCode()) : ''
           ];
         }
       }

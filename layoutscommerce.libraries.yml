@@ -8,6 +8,13 @@ layoutscommerce:
   dependencies:
     - core/drupalSettings
     - layoutscommerce/jquery-labelauty
+    
+# Custom module library for general purposes.
+layoutscommerce-add-to-cart:
+  js:
+    js/layoutscommerce-add-to-cart.js: {}
+  dependencies:
+    - core/drupalSettings
 
 # Third-party library (self hosted).
 jquery-labelauty:
