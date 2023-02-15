@@ -103,8 +103,12 @@ class LayoutscommerceProductVariation {
         // dump($this->product_variation);
         if ($this->product_variation)
           return true;
+        else {
+          \Drupal::messenger()->addWarning(' Le produit "' . $product->getTitle() . '(' . $product->id() . ')" ' . " n'a pas de variation");
+        }
       }
-      \Drupal::messenger()->addWarning('impossible de terminer le produit');
+      else
+        \Drupal::messenger()->addWarning('impossible de terminer le produit ...');
     }
     return false;
   }
