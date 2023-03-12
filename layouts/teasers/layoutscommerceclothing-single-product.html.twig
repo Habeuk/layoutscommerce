@@ -58,7 +58,7 @@
 				{{content.title}}
 			</h4>
 		{% endif %}
-		{% if content.description %}
+		{% if content.description|has_value %}
 			<div {{region_attributes.description.addClass(['description','csp-desc'])}}>
 				{{content.description}}
 			</div>
