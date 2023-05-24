@@ -5,6 +5,7 @@ namespace Drupal\layoutscommerce\Plugin\Layout\Teasers;
 use Drupal\layoutscommerce\Plugin\Layout\LayoutscommerceTeaser;
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * A very advanced custom layout.
@@ -81,9 +82,36 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
     return $build;
   }
   
-  function defaultConfiguration() {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['limit_text'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Nombre de caractere pour la description'),
+      '#default_value' => $this->configuration['limit_text'],
+      '#description' => 'si la valeur est vide le texte va etre afficher dans son enssemble. Les balises sont supprimées.'
+    ];
+    return $form;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers::submitConfigurationForm()
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['limit_text'] = $form_state->getValue('limit_text');
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers::defaultConfiguration()
+   */
+  public function defaultConfiguration() {
     return [
       'load_libray' => false,
+      'limit_text' => 115,
       'infos' => [
         'builder-form' => true,
         'info' => [
@@ -132,46 +160,46 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
       'textes' => [
         'builder-form' => true,
         'info' => [
-            'title' => 'Textes information',
-            'loader' => 'static'
+          'title' => 'Textes information',
+          'loader' => 'static'
         ],
         'fields' => [
           'title' => [
             'text_html' => [
-              'label'=> 'title',
-              'value'=> 'Quisque fringilla'
+              'label' => 'title',
+              'value' => 'Quisque fringilla'
             ]
           ],
           'description' => [
             'text_html' => [
-              'label'=> 'Description',
-              'value'=> 'Product build to show how fermentted slowly down of another one column'
+              'label' => 'Description',
+              'value' => 'Product build to show how fermentted slowly down of another one column'
             ]
           ],
           'price' => [
             'text_html' => [
-              'label'=> 'price',
-              'value'=> '$222'
+              'label' => 'price',
+              'value' => '$222'
             ]
           ],
           'reduction' => [
             'text_html' => [
-              'label'=> 'reduction',
-              'value'=> '-10%'
+              'label' => 'reduction',
+              'value' => '-10%'
             ]
           ],
           'old_price' => [
             'text_html' => [
-              'label'=> 'Ancien Prix',
-              'value'=> '$422'
+              'label' => 'Ancien Prix',
+              'value' => '$422'
             ]
           ],
           'categories' => [
             'text_html' => [
-              'label'=> 'categories',
-              'value'=> 'New'
+              'label' => 'categories',
+              'value' => 'New'
             ]
-          ],   
+          ]
         ]
       ]
     ] + parent::defaultConfiguration();

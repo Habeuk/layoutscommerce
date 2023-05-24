@@ -60,7 +60,12 @@
 		{% endif %}
 		{% if content.description|has_value %}
 			<div {{region_attributes.description.addClass(['description','csp-desc'])}}>
-				{{content.description}}
+				{% set text = content.description|render|striptags|trim %}
+				{% if settings.limit_text > 0 %}
+				    {{ text|length > settings.limit_text ? text|slice(0, settings.limit_text) ~ '...' : text }}
+				{% else %}
+				    {{ text }}
+				{% endif %}
 			</div>
 		{% endif %}
 		<div class="price-rating d-flex justify-content-between">

@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\commerce_price\CurrencyFormatter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\commerce_product\Plugin\Field\FieldWidget\ProductVariationAttributesWidget;
+use Stephane888\Debug\debugLog;
 
 /**
  * Plugin implementation of the 'commerce_product_variation_attributes' widget.
@@ -22,6 +23,13 @@ use Drupal\commerce_product\Plugin\Field\FieldWidget\ProductVariationAttributesW
  * )
  */
 class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
+  /**
+   * Regroupe les variation en function de l'id de attribut.
+   * Facilite la recherche.
+   *
+   * @var array
+   */
+  private $variationsByAttributesIds = [];
   
   /**
    * Renderer service.
@@ -45,6 +53,18 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
     $instance->renderer = $container->get('renderer');
     $instance->currency_formatter = $container->get('commerce_price.currency_formatter');
     return $instance;
+  }
+  
+  /**
+   * --
+   */
+  private function getAttributesFromVariations(array $variations, $field_name) {
+    if (empty($this->variationsByAttributesIds[$field_name]))
+      foreach ($variations as $variation) {
+        /** @var \Drupal\commerce_product\Entity\ProductVariationInterface $variation */
+        $this->variationsByAttributesIds[$field_name][$variation->getAttributeValueId($field_name)] = $variation;
+      }
+    return $this->variationsByAttributesIds[$field_name];
   }
   
   /**
@@ -145,14 +165,20 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
      */
     
     foreach ($this->variationAttributeMapper->prepareAttributes($selected_variation, $variations) as $field_name => $attribute) {
+      /**
+       *
+       * @var \Drupal\commerce_product\PreparedAttribute $attribute
+       */
       $options = [];
-      
-      foreach ($attribute->getValues() as $k => $value) {
+      $values = $attribute->getValues();
+      $variations = $this->getAttributesFromVariations($variations, $field_name);
+      foreach ($values as $k => $value) {
         if (!empty($variations[$k]))
           $price = $variations[$k]->getPrice();
         else
           $price = $selected_variation->getPrice();
         
+        //
         $render_attributes = [
           '#theme' => 'layoutscommerce_attribute_items',
           '#price' => $this->currency_formatter->format($price->getNumber(), $price->getCurrencyCode()),
@@ -162,6 +188,7 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
         // $options[$k] = $this->renderer->render($render_attributes);
         $options[$k] = $render_attributes;
       }
+      
       $attribute_element = [
         '#type' => $attribute->getElementType(),
         // '#title' => $attribute->getLabel(),
