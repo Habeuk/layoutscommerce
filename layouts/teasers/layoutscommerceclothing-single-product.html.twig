@@ -53,35 +53,37 @@
 				{% endif %}
 			</div>
 		</div>
-		{% if content.title %}
-			<h4 {{region_attributes.title.addClass(['title','csp-title'])}}>
-				{{content.title}}
-			</h4>
+		{% if content.title %}			
+			<h4 {{region_attributes.title.addClass(['title','csp-title'])}} title="{{content.title|render|striptags|trim}}" data-toggle="tooltip"> {{content.title}} </h4>
 		{% endif %}
 		{% if content.description|has_value %}
 			<div {{region_attributes.description.addClass(['description','csp-desc'])}}>
-				{% set text = content.description|render|striptags|trim %}
-				{% if settings.limit_text > 0 %}
-				    {{ text|length > settings.limit_text ? text|slice(0, settings.limit_text) ~ '...' : text }}
-				{% else %}
-				    {{ text }}
-				{% endif %}
+    			{% if content.description.layout_builder_add_block %}
+    				{{ content.description }}
+    			{% else %}
+    			    {% set text = content.description|render|striptags|trim %}
+    				{% if settings.limit_text > 0 %}
+    				    {{ text|length > settings.limit_text ? text|slice(0, settings.limit_text) ~ '...' : text }}
+    				{% else %}
+    				    {{ text }}
+    				{% endif %}
+    			{% endif %}				
 			</div>
 		{% endif %}
-		<div class="price-rating d-flex justify-content-between">
-			<div class="d-flex">
-				{% if content.price %}
-					<div {{region_attributes.price.addClass(['price'])}}>
-						{{content.price}}
-					</div>
-				{% endif %}
-				{% if content.old_price %}
-					<div {{region_attributes.old_price.addClass(['price','price price--old'])}}>
-						{{content.old_price}}
-					</div>
-				{% endif %}
-			</div>
-			<div class="rating"></div>
-		</div>
+    		<div class="price-rating d-flex justify-content-between">
+    			<div class="d-flex">
+    				{% if content.price %}
+    					<div {{region_attributes.price.addClass(['price'])}}>
+    						{{content.price}}
+    					</div>
+    				{% endif %}
+    				{% if content.old_price %}
+    					<div {{region_attributes.old_price.addClass(['price','price price--old'])}}>
+    						{{content.old_price}}
+    					</div>
+    				{% endif %}
+    			</div>
+    			<div class="rating"></div>
+    		</div>
 	</div>
 {% endif %}
