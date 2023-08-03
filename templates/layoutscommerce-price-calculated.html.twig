@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Default commerce price calculated template.
+ *
+ * Available variables:
+ * - calculated_price: The calculated price.
+ * - purchasable_entity: The purchasable entity.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="align-items-start d-flex">
+	<span class="currency h5 font-weight-bold mb-0">{{- currency_code -}}</span> <span class="amount">{{- calculated_price -}}</span> <span class="duration h6 mb-0"> / Per Course </span>
+</div>

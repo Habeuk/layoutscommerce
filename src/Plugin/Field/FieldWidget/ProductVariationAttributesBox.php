@@ -75,6 +75,7 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
     /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
     $product = $form_state->get('product');
     $variations = $this->loadEnabledVariations($product);
+    
     if (count($variations) === 0) {
       // Nothing to purchase, tell the parent form to hide itself.
       $form_state->set('hide_form', TRUE);
@@ -85,11 +86,17 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
       return $element;
     }
     elseif (count($variations) === 1) {
+      
       /** @var \Drupal\commerce_product\Entity\ProductVariationInterface $selected_variation */
       $selected_variation = reset($variations);
       // If there is 1 variation but there are attribute fields, then the
       // customer should still see the attribute widgets, to know what they're
       // buying (e.g a product only available in the Small size).
+      /**
+       * S'il y a 1 variation mais qu'il y a des champs d'attributs, le client
+       * doit toujours voir les widgets d'attributs, pour savoir ce qu'il achète
+       * (par exemple, un produit uniquement disponible en petite taille)
+       */
       if (empty($this->attributeFieldManager->getFieldDefinitions($selected_variation->bundle()))) {
         $element['variation'] = [
           '#type' => 'value',
@@ -105,6 +112,10 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
         
         return $element;
       }
+      // else {
+      // dump($selected_variation->bundle());
+      // dump($this->attributeFieldManager->getFieldDefinitions($selected_variation->bundle()));
+      // }
     }
     
     // Build the full attribute form.
@@ -172,6 +183,7 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
       $options = [];
       $values = $attribute->getValues();
       $variations = $this->getAttributesFromVariations($variations, $field_name);
+      
       foreach ($values as $k => $value) {
         if (!empty($variations[$k]))
           $price = $variations[$k]->getPrice();
@@ -188,8 +200,11 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
         // $options[$k] = $this->renderer->render($render_attributes);
         $options[$k] = $render_attributes;
       }
-      
+      // dump($options);
+      // dump($attribute->getElementType());
       $attribute_element = [
+        // le type doit etre "radios", configurer cela au niveau des attributes
+        // : /admin/commerce/product-attributes
         '#type' => $attribute->getElementType(),
         // '#title' => $attribute->getLabel(),
         '#options' => $options,

@@ -120,6 +120,11 @@ class CommentNutribeFormatter extends CommentDefaultFormatter {
     $this->LayoutgenentitystylesServices->addStyleFromModule("layoutscommerce/comment-nutribe-formatter", 'comment_nutribe_formatter', 'default');
   }
   
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\comment\Plugin\Field\FieldFormatter\CommentDefaultFormatter::viewElements()
+   */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = parent::viewElements($items, $langcode);
     $comments = [

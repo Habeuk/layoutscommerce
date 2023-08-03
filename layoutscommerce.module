@@ -51,8 +51,25 @@ function layoutscommerce_theme() {
     'file' => 'layoutscommerce.theme.inc'
   ];
   //
+  $hooks['layoutscommerce_price_calculated'] = [
+    'variables' => [
+      'calculated_price' => NULL,
+      'purchasable_entity' => NULL,
+      'currency_code' => NULL,
+      'duration' => NULL
+    ],
+    'preprocess functions' => [
+      'template_layoutscommerce_price_calculated'
+    ]
+  ];
   return $hooks;
 }
+
+function template_layoutscommerce_price_calculated(&$vars) {
+  //
+}
+
+
 
 
 /**

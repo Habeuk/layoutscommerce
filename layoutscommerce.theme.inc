@@ -24,3 +24,4 @@
   function template_preprocess_layoutscommerce_comments(&$vars) {
     //
   }
+  
