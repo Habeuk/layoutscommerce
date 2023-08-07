@@ -1,18 +1,18 @@
 {
-    "name": "stephane888/layoutscommerce",
-    "description": "forunit un enssemble de layout pour le commere",
-    "type": "drupal-module-custom",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "stephane888",
-            "email": "kksasteph888@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require" : {
-        "stephane888/formatage_models": "dev-3x | ^3.1",
-        "drupal/commerce": "^2.30",
-        "drupal/commerce_stock": "^1.0"
+  "name": "habeuk/layoutscommerce",
+  "description": "forunit un enssemble de layout pour le commere",
+  "type": "drupal-module-custom",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "stephane888",
+      "email": "kksasteph888@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "habeuk/formatage_models": "dev-3x | ^3.1",
+    "drupal/commerce": "^2.30",
+    "drupal/commerce_stock": "^1.0"
+  }
 }
