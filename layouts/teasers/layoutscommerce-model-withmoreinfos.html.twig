@@ -1,27 +1,32 @@
 {% if content %}
 	<div {{attributes.addClass('themeholy-driver-price-card')}}>
+		{% if content.images %}
+			<div {{ region_attributes.images.addClass(['images','item']) }}>
+				{{ content.images }}
+			</div>			
+		{% endif %}
 		{% if content.title %}
         	<h3 {{region_attributes.title.addClass(['box-title','item'])}}> {{ content.title }} </h3>
         {% endif %}
         {% if content.small_decription %}
-        <div{{ region_attributes.small_decription.addClass(['price-card_text','item']) }}>
-          {{ content.small_decription }}
-        </div>
+            <div{{ region_attributes.small_decription.addClass(['price-card_text','item']) }}>
+              {{ content.small_decription }}
+            </div>
         {% endif %}
         {% if content.price %}
-        <h4  {{ region_attributes.price.addClass(['price-card_price','item']) }}>
-            {{ content.price|layout_value }}
-        </h4>
+            <h4  {{ region_attributes.price.addClass(['price-card_price','item']) }}>
+                {{ content.price|layout_value }}
+            </h4>
         {% endif %}
         {% if content.description %}
-        <div {{ region_attributes.description.addClass(['price-card_content','item']) }}>
-        	{{ content.description }}
-        </div>
+            <div {{ region_attributes.description.addClass(['price-card_content','item']) }}>
+            	{{ content.description }}
+            </div>
         {% endif %}
         {% if content.add_to_cart %}
-        <div class="action">
-          {{ content.add_to_cart }}
-        </div>
+            <div class="action">
+              {{ content.add_to_cart }}
+            </div>
         {% endif %}
       </div>
 {% endif %}
