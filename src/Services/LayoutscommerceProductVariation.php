@@ -53,7 +53,13 @@ class LayoutscommerceProductVariation {
    */
   function getRenderAddToCart($fiedProduct, array &$build, $region_name = 'icon_add_to_cart', $regionContent = null) {
     if ($this->getVariant($fiedProduct)) {
-      $build[$region_name] = [
+      // dump($build[$region_name]['#attributes']);
+      /**
+       * La clée 'custom-add-to-cart' permet de proteger les attributes dans le
+       * renu.
+       * cela evite les doublons d'attibutes.
+       */
+      $build[$region_name]['custom-add-to-cart'] = [
         '#type' => 'html_tag',
         '#tag' => 'div',
         '#attributes' => [

@@ -79,6 +79,7 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
     FormatageModelsThemes::formatSettingValues($build);
     $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
     $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
+    // dump($build);
     return $build;
   }
   
