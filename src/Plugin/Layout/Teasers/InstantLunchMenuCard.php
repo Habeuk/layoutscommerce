@@ -68,7 +68,18 @@ class InstantLunchMenuCard extends LayoutscommerceTeaser {
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
     $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build, 'add_to_cart', $build['add_to_cart']);
+    /**
+     * On force ce cas, afin d'avoir un autre model d'ajout au panier car celui
+     * par defaut presente un seul style.
+     *
+     * @var array $add
+     */
+    $add = [
+      '#type' => 'html_tag',
+      '#tag' => 'div',
+      '#value' => 'Ajouter au panier'
+    ];
+    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build, 'add_to_cart', $add);
     return $build;
   }
   

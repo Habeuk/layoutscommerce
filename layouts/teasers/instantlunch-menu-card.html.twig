@@ -42,7 +42,9 @@
 					{% endif %}
 				</div>
 			</div>
-			{% if content.add_to_cart|has_value %}
+			{% if content.add_to_cart.layout_builder_add_block %}
+				{{content.add_to_cart }}
+			{% else %}
 				<div class="il-action-card">
 					<div class="bouton-quantity-card">
 						<button class="ilac-btn" data-type="minus">
@@ -57,7 +59,7 @@
 							</svg>
 						</button>
 					</div>
-					<div class="card-btn card-btn--sm card-btn--scale-up px-3">
+					<div class="card-btn card-btn--sm card-btn--scale-up px-3">						
 						{{content.add_to_cart}}
 					</div>
 				</div>
