@@ -11,7 +11,7 @@
 			<div class="row">
 				<!-- Block with relative products images -->
 				{% if content.images %}
-				<div class="col-md-12 col-xm-12 col-lg-6 image-content">
+				<div class="{{ settings.config_product.content_left }} image-content">
 					<div class="product-tager">
 						<div class="product-tags">
 							{% for item in content.categories|array_elements(region_attributes.categories.addClass('product-tag')) %}
@@ -29,14 +29,11 @@
 				</div>
 				{% endif %}
 				<!-- block with product caractéristics -->
-				<div class="col-md-12 col-xm-12 col-lg-6 desc-content">
+				<div class="{{ settings.config_product.content_right }} desc-content">
 					<!-- product-description -->
 					<div class="product-description">
 						{% if content.titre %}
-						<h1
-							{{ region_attributes.titre.addClass('product-description__name') }}>
-							{{ content.titre }}
-						</h1>
+						<h1 {{ region_attributes.titre.addClass('product-description__name') }}> {{ content.titre }} </h1>
 						{% endif %}
 						{% if content.sub_title %}
 						<div

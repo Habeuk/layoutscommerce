@@ -2,8 +2,8 @@
 
 namespace Drupal\layoutscommerce\Plugin\Layout\Pages;
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\formatage_models\FormatageModelsThemes;
-use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\layoutscommerce\Plugin\Layout\LayoutscommercePage;
 
 /**
@@ -57,16 +57,33 @@ use Drupal\layoutscommerce\Plugin\Layout\LayoutscommercePage;
  * )
  */
 class LayoutscommerceProductParfum extends LayoutscommercePage {
+  protected $image_icon_url = "/icones/pages/layoutscommerce-product-parfumn.png";
   
   /**
    *
    * {@inheritdoc}
-   * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
+   * @see \Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection::buildConfigurationForm()
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
-    // TODO Auto-generated method stub
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/pages/layoutscommerce-product-parfumn.png");
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    $form = parent::buildConfigurationForm($form, $form_state);
+    $form['config_product'] = [
+      '#type' => 'details',
+      '#title' => 'Configuration de la page produit',
+      '#open' => false
+    ];
+    $form['config_product']['content_left'] = [
+      '#type' => 'textfield',
+      '#title' => 'content left',
+      '#default_value' => isset($this->configuration['config_product']['content_left']) ? $this->configuration['config_product']['content_left'] : 'col-md-12 col-xm-12 col-lg-6',
+      '#maxlength' => 256
+    ];
+    $form['config_product']['content_right'] = [
+      '#type' => 'textfield',
+      '#title' => 'content right',
+      '#default_value' => isset($this->configuration['config_product']['content_right']) ? $this->configuration['config_product']['content_right'] : 'col-md-12 col-xm-12 col-lg-6',
+      '#maxlength' => 256
+    ];
+    return $form;
   }
   
   /**
@@ -78,7 +95,6 @@ class LayoutscommerceProductParfum extends LayoutscommercePage {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     
-    //
     // if (!empty($build['form_add_to_cart'][0]))
     // $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'],
     // $build, 'form_add_to_cart', $build['form_add_to_cart']);
@@ -90,12 +106,26 @@ class LayoutscommerceProductParfum extends LayoutscommercePage {
   /**
    *
    * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection::submitConfigurationForm()
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['config_product'] = $form_state->getValue('config_product');
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection::defaultConfiguration()
    */
   public function defaultConfiguration() {
     return [
       'css' => '',
-      'region_css_marque' => 'text-center'
+      'region_css_marque' => 'text-center',
+      'config_product' => [
+        'content_left' => 'col-md-12 col-xm-12 col-lg-6 mb-5 m-md-0',
+        'content_right' => 'col-md-12 col-xm-12 col-lg-6'
+      ]
     ] + parent::defaultConfiguration();
   }
   
