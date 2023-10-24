@@ -31,7 +31,7 @@
 				{% if content.icon_add_to_cart %}					
 					<div {{region_attributes.icon_add_to_cart.addClass(['icon_add_to_cart','btn-carre'])}}>
 						<div class="bc-tooltip">
-							Ajouter au panier
+							{{ 'Add to cart'|trans }}
 						</div>
 						{{ content.icon_add_to_cart }}
 					</div>
@@ -53,8 +53,12 @@
 				{% endif %}
 			</div>
 		</div>
-		{% if content.title %}			
-			<h4 {{region_attributes.title.addClass(['title','csp-title'])}} title="{{content.title|render|striptags|trim}}" data-toggle="tooltip"> {{content.title}} </h4>
+		{% if content.title %}	
+		{% if content.title.layout_builder_add_block %}
+		    {{ content.title }}		
+		{% else %}
+			<h4 {{region_attributes.title.addClass(['title','csp-title'])}}> {{content.title}} </h4>
+		{% endif %}
 		{% endif %}
 		{% if content.description|has_value %}
 			<div {{region_attributes.description.addClass(['description','csp-desc'])}}>

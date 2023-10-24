@@ -10,7 +10,7 @@
 		<div class="product-content">
 			<div class="row">
 				<!-- Block with relative products images -->
-				{% if content.images %}
+				{% if content.images or content.categories or content.icones %}
 				<div class="{{ settings.config_product.content_left }} image-content">
 					<div class="product-tager">
 						<div class="product-tags">
@@ -24,8 +24,9 @@
 							{% endfor %}
 						</div>
 					</div>
-
-					{{ content.images }}
+					<div {{ region_attributes.images.addClass('images') }}>
+						{{ content.images }}
+					</div>					
 				</div>
 				{% endif %}
 				<!-- block with product caractéristics -->
