@@ -1,0 +1,42 @@
+{% if content %}
+
+	<div {{attributes.addclass(['portrait','mt-5'])}}>
+		<div class="container d-flex">
+			{% if content.image|has_value or content.badge|has_value or content.wishlist|has_value or content.title|has_value or content.price|has_value or content.availability|has_value %}
+				<div class="wrapper">
+					{% if content.image|has_value %}
+						{{content.image}}
+					{% endif %}
+
+					{% if content.badge|has_value or content.wishlist|has_value %}
+						<div class="d-flex justify-content-between">
+							{% if content.badge|has_value %}
+								<h6 {{region_attributes.badge.addClass('font-weight-bold font-italic')}}>{{content.badge}}</h6>
+							{% endif %}
+
+							{% if content.wishlist|has_value %}
+								<p {{region_attributes.wishlist.addClass('icon')}}>
+									{{content.wishlist}}
+								</p>
+							{% endif %}
+
+						</div>
+					{% endif %}
+
+					{% if content.title|has_value %}
+						<h4 {{region_attributes.wishlist.addClass('font-weight-bold')}}>{{ content.title }}</h4>
+					{% endif %}
+
+					{% if content.price|has_value %}
+						<p>{{ content.price }}</p>
+					{% endif %}
+					{% if content.availability|has_value %}
+						<p title="En stock" {{region_attributes.availability.addClass('show bg-info text-white text-center p-2')}}>{{ content.availability }}</p>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+
+{% endif %}

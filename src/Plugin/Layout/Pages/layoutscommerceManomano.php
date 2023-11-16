@@ -72,7 +72,7 @@ class layoutscommerceManomano extends FormatageModelsPages {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'layoutscommerce') . "/icones/pages/layoutscommerce-manomano.png");
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/pages/layoutscommerce-manomano.png");
   }
   
   /**
