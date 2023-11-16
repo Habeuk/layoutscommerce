@@ -1,0 +1,17 @@
+{% if content %}
+	<pre>
+    	{{ dump(content) }}
+	</pre>
+	<div>
+		{{ content.main_gallery }}
+	</div>
+	<div>
+		{{content.thumb_gallery}}
+	</div>
+	<div>
+		{{content.attributes}}
+	</div>
+	<div>
+		{{content.properties}}
+	</div>
+{% endif %}
