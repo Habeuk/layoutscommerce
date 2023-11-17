@@ -100,54 +100,54 @@ class LayoutsCommerceNebuleuse extends FormatageModelsSection {
 				'fields' => [
 					'main_gallery' => [
 						'text_html' => [
-							'label' => t('Gallery'),
+							'label' => 'Gallery',
 							'value' => ''
 						]
 					],
 					'thumb_gallery' => [
 						'text_html' => [
-							'label' => t('thumbnail navigator'),
+							'label' => 'thumbnail navigator',
 							'value' => ''
 						]
 					],
 					'manufacturer' => [
 						'text_html' => [
-							'label' => t('manufacturer')
+							'label' => 'manufacturer'
 						]
 					],
 					'rating' => [
 						'text_html' => [
-							'label' => t('rating'),
+							'label' => 'rating',
 						]
 					],
 					'sup_info' => [
 						'text_html' => [
-							'label' => t('more informations'),
+							'label' => 'more informations',
 						]
 					],
 					'status' => [
 						'text_html' => [
-							'label' => t('product status')
+							'label' => 'product status'
 						]
 					],
 					'attributes' => [
 						'text_html' => [
-							'label' => t('product\'s attributes')
+							'label' => 'product\'s attributes'
 						]
 					],
 					'add_to_cart' => [
 						'text_html' => [
-							'label' => t('add to cart button')
+							'label' => 'add to cart button'
 						]
 					],
 					'add_to_wish_list' => [
 						'text_html' => [
-							'label' => t('add to wish list button')
+							'label' => 'add to wish list button'
 						]
 					],
 					'properties' => [
 						'text_html' => [
-							'label' => t('product\' properties')
+							'label' => 'product\' properties'
 						]
 					]
 				]
