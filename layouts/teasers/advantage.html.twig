@@ -1,0 +1,19 @@
+{% if content %}
+	<div {{attributes.addclass(['advantage'])}}>
+		{% if content.icon|has_value %}
+			<div {{region_attributes.icon.addClass('advantage__svg')}}>
+				{{ content.icon }}
+			</div>
+		{% endif %}
+		{% if content.title|has_value or content.subtitle|has_value %}
+			<div class="advantage__text">
+				{% if content.title|has_value %}
+					<div {{region_attributes.title.addClass('advantage__title')}}>{{ content.title }}</div>
+				{% endif %}
+				{% if content.subtitle|has_value %}
+                <div {{region_attributes.subtitle.addClass('advantage__subtitle text-muted')}}>{{ content.subtitle }}</div>
+                {% endif %}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

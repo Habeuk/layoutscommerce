@@ -10,35 +10,35 @@ use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "fashion_product_card",
- *   label = @Translation("Fashion product Card"),
+ *   id = "promoted_product",
+ *   label = @Translation("Promoted Product"),
  *   category = @Translation("Commerce-Teaser"),
  *   path = "layouts/teasers",
- *   template = "fashion-product-card",
- *   library = "layoutscommerce/fashion-product-card",
+ *   template = "promoted-product",
+ *   library = "layoutscommerce/promoted-product",
  *   regions = {
  *     "image" = {
  *       "label" = @Translation(" Image "),
  *     },
- *     "badge" = {
- *       "label" = @Translation(" Badge "),
+ *     "price" = {
+ *       "label" = @Translation(" Price "),
  *     },
- *     "wishlist" = {
- *       "label" = @Translation(" Wishlist "),
+ *     "oldPrice" = {
+ *       "label" = @Translation(" Old price "),
  *     },
  *     "title" = {
  *       "label" = @Translation(" Title "),
  *     },
- *     "price" = {
- *       "label" = @Translation(" Price "),
+ *     "subtitle" = {
+ *       "label" = @Translation(" Subtitle "),
  *     },
- *     "availability" = {
- *       "label" = @Translation(" Availability "),
+ *     "description" = {
+ *       "label" = @Translation(" Description "),
  *     }
  *   }
  * )
  */
-class FashionProductCard extends FormatageModelsTeasers {
+class PromotedProduct extends FormatageModelsTeasers {
   
   /**
    *
@@ -48,7 +48,7 @@ class FashionProductCard extends FormatageModelsTeasers {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/teasers/fashion-product-card.png");
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/teasers/promoted-product.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
   
@@ -67,10 +67,6 @@ class FashionProductCard extends FormatageModelsTeasers {
   function defaultConfiguration() {
     return [
       'load_libray' => false,
-      'css' => 'mt-5',
-      'region_css_badge' => 'font-weight-bold font-italic',
-      'region_css_wishlist' => 'font-weight-bold',
-      'region_css_availability' => 'bg-info text-white text-center p-2',
       'infos' => [
         'builder-form' => true,
         'info' => [
@@ -84,15 +80,15 @@ class FashionProductCard extends FormatageModelsTeasers {
               'value' => ''
             ]
           ],
-          'badge' => [
+          'price' => [
             'text' => [
-              'label' => 'Badge',
+              'label' => 'Price',
               'value' => ''
             ]
           ],
-          'wishlist' => [
+          'oldPrice' => [
             'text_html' => [
-              'label' => 'Wishlist',
+              'label' => 'Old price',
               'value' => ''
             ]
           ],
@@ -102,15 +98,15 @@ class FashionProductCard extends FormatageModelsTeasers {
               'value' => ''
             ]
           ],
-          'price' => [
+          'subtitle' => [
             'text' => [
-              'label' => 'Price',
+              'label' => 'Subtitle',
               'value' => ''
             ]
           ],
-          'availability' => [
+          'description' => [
             'text' => [
-              'label' => 'Availability',
+              'label' => 'Description',
               'value' => ''
             ]
           ]
