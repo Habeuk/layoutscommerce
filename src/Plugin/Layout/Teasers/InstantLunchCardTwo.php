@@ -6,14 +6,13 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
 use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
 
-
 /**
  * A very advanced custom layout.
  *
  * @Layout(
  *   id = "instant_lunch_card_two",
- *   label = @Translation(" Instant Lunch card two"),
- *   category = @Translation("instantlunch"),
+ *   label = @Translation("Instant Lunch card two"),
+ *   category = @Translation("Commerce-Teaser"),
  *   path = "layouts/teasers",
  *   template = "instantlunch-card-two",
  *   library = "layoutscommerce/instantlunch-card-two",
@@ -28,6 +27,7 @@ use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
  * )
  */
 class InstantLunchCardTwo extends FormatageModelsTeasers {
+  
   /**
    *
    * {@inheritdoc}

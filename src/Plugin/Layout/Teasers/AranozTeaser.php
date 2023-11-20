@@ -14,12 +14,12 @@ use Drupal\commerce_price\CurrencyFormatter;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "layoutscommerce_teaser",
- *   label = @Translation(" Teaser commerce manomano 2022 "),
+ *   id = "layoutscommerce_aranozteaser",
+ *   label = @Translation(" Aranoz teaser "),
  *   category = @Translation("Commerce-Teaser"),
  *   path = "layouts/teasers",
- *   template = "layoutscommerce-teaser",
- *   library = "layoutscommerce/layoutscommerce-teaser",
+ *   template = "layoutscommerce-aranozteaser",
+ *   library = "layoutscommerce/layoutscommerce-aranozteaser",
  *   default_region = "titre",
  *   regions = {
  *     "images" = {
@@ -28,13 +28,22 @@ use Drupal\commerce_price\CurrencyFormatter;
  *     "title" = {
  *       "label" = @Translation(" Titre "),
  *     },
+ *     "stars" = {
+ *       "label" = @Translation(" stars "),
+ *     },
  *     "price" = {
- *       "label" = @Translation(" price ")
+ *       "label" = @Translation(" Price ")
+ *     },
+ *     "add_to_cart" = {
+ *       "label" = @Translation(" add_to_cart ")
+ *     },
+ *     "icons" = {
+ *       "label" = @Translation(" Icons ")
  *     },
  *   }
  * )
  */
-class LayoutscommerceTeaser extends FormatageModelsTeasers {
+class AranozTeaser extends FormatageModelsTeasers {
   /**
    *
    * @var CurrencyFormatter
@@ -49,8 +58,7 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/teasers/layoutscommerce-teaser.png");
-    // $this->currency_formatter = $CurrencyFormatter;
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/teasers/layoutscommerce_aranozteaser.png");
   }
   
   /**
@@ -61,6 +69,18 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
     $instance->currency_formatter = $container->get('commerce_price.currency_formatter');
     return $instance;
+  }
+  
+  /**
+   *
+   * {@inheritdoc}
+   * @see \Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers::defaultConfiguration()
+   */
+  public function defaultConfiguration() {
+    return [
+      'css' => '',
+      'region_css_title' => 'h5 font-weight-bold'
+    ] + parent::defaultConfiguration();
   }
   
   /**
@@ -110,17 +130,6 @@ class LayoutscommerceTeaser extends FormatageModelsTeasers {
         }
       }
     }
-  }
-  
-  /**
-   *
-   * {@inheritdoc}
-   * @see \Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers::defaultConfiguration()
-   */
-  public function defaultConfiguration() {
-    return [
-      'css' => ''
-    ] + parent::defaultConfiguration();
   }
   
 }

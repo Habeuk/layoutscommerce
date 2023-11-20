@@ -1,0 +1,19 @@
+{% if content %}
+<div {{attributes.addclass(['aranoz-product-teaser'])}}>
+	<div {{ region_attributes.images.addClass('aranoz-product-teaser__images') }}>
+		{{ content.images }}
+	</div>
+	<div class="aranoz-product-teaser__text">
+		<h4 {{ region_attributes.title }}> {{ content.title }} </h4>
+		<h4 {{ region_attributes.price }}> {{ content.price }} </h4>
+		<div class="d-flex justify-content-between">
+			<div {{ region_attributes.price.addClass('add_cart') }}>
+				{{ content.add_to_cart }}
+			</div>
+			<div {{ region_attributes.icons.addClass('icons') }}>
+				{{ content.icons }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}

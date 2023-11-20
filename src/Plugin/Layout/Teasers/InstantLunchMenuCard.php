@@ -12,7 +12,7 @@ use Drupal\formatage_models\FormatageModelsThemes;
  * @Layout(
  *   id = "instant_lunch_menu_card",
  *   label = @Translation(" Instant Lunch menu card "),
- *   category = @Translation("instantlunch"),
+ *   category = @Translation("Commerce-Teaser"),
  *   path = "layouts/teasers",
  *   template = "instantlunch-menu-card",
  *   library = "layoutscommerce/instantlunch-menu-card",
