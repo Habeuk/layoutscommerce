@@ -1,8 +1,8 @@
 {% if content %}
 	<div {{attributes.addclass(['advantage'])}}>
-		{% if content.svg|has_value %}
-			<div {{region_attributes.svg.addClass('advantage__svg')}}>
-				{{ content.svg }}
+		{% if content.icon|has_value %}
+			<div {{region_attributes.icon.addClass('advantage__svg')}}>
+				{{ content.icon }}
 			</div>
 		{% endif %}
 		{% if content.title|has_value or content.subtitle|has_value %}

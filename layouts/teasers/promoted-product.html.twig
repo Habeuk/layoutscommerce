@@ -1,0 +1,36 @@
+{% if content %}
+	<div {{attributes.addclass(['promoted-product'])}}>
+		{% if content.description|has_value or content.title|has_value or content.subtitle|has_value or content.price|has_value or content.oldPrice|has_value %}
+			<div class="promoted-product__content">
+				{% if content.description|has_value %}
+					<div {{region_attributes.description.addClass('promoted-product__description')}}>{{ content.description }}</div>
+				{% endif %}
+				{% if content.title|has_value %}
+					<div {{region_attributes.title.addClass('promoted-product__title')}}>{{ content.title }}</div>
+				{% endif %}
+				{% if content.subtitle|has_value or content.price|has_value or content.price|has_value or content.oldPrice|has_value %}
+					<div class="promoted-product__price-container">
+						{% if content %}
+							<div {{region_attributes.subtitle.addClass('promoted-product__subtitle')}}>{{ content.subtitle }}</div>
+						{% endif %}
+						{% if content.price|has_value or content.oldPrice|has_value %}
+							<div class="promoted-product__price">
+								{% if content.price %}
+									<span {{region_attributes.price.addClass('promoted-product__current-price')}}>{{ content.price }}</span>
+								{% endif %}
+								{% if content.oldPrice %}
+                                <del {{region_attributes.oldPrice.addClass('promoted-product__old-price')}}>{{ content.oldPrice }}</del>
+                                {% endif %}
+							</div>
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+		{% if content.image|has_value %}
+			<div {{region_attributes.image.addClass('promoted-product__image')}}>
+				{{ content.image }}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

@@ -10,26 +10,35 @@ use Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers;
  * A very advanced custom layout.
  *
  * @Layout(
- *   id = "advantage",
- *   label = @Translation("Advantage teaser"),
+ *   id = "promoted_product",
+ *   label = @Translation("Promoted Product"),
  *   category = @Translation("Commerce-Teaser"),
  *   path = "layouts/teasers",
- *   template = "advantage",
- *   library = "layoutscommerce/advantage",
+ *   template = "promoted-product",
+ *   library = "layoutscommerce/promoted-product",
  *   regions = {
- *     "icon" = {
- *       "label" = @Translation(" Icon "),
+ *     "image" = {
+ *       "label" = @Translation(" Image "),
+ *     },
+ *     "price" = {
+ *       "label" = @Translation(" Price "),
+ *     },
+ *     "oldPrice" = {
+ *       "label" = @Translation(" Old price "),
  *     },
  *     "title" = {
  *       "label" = @Translation(" Title "),
  *     },
  *     "subtitle" = {
  *       "label" = @Translation(" Subtitle "),
+ *     },
+ *     "description" = {
+ *       "label" = @Translation(" Description "),
  *     }
  *   }
  * )
  */
-class Advantage extends FormatageModelsTeasers {
+class PromotedProduct extends FormatageModelsTeasers {
   
   /**
    *
@@ -39,7 +48,7 @@ class Advantage extends FormatageModelsTeasers {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/teasers/advantage.png");
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/teasers/promoted-product.png");
     // $this->currency_formatter = $CurrencyFormatter;
   }
   
@@ -65,9 +74,21 @@ class Advantage extends FormatageModelsTeasers {
           'loader' => 'dynamic'
         ],
         'fields' => [
-          'icon' => [
+          'image' => [
             'text_html' => [
-              'label' => 'Icon',
+              'label' => 'image',
+              'value' => ''
+            ]
+          ],
+          'price' => [
+            'text' => [
+              'label' => 'Price',
+              'value' => ''
+            ]
+          ],
+          'oldPrice' => [
+            'text_html' => [
+              'label' => 'Old price',
               'value' => ''
             ]
           ],
@@ -78,11 +99,17 @@ class Advantage extends FormatageModelsTeasers {
             ]
           ],
           'subtitle' => [
-            'text_html' => [
+            'text' => [
               'label' => 'Subtitle',
               'value' => ''
             ]
           ],
+          'description' => [
+            'text' => [
+              'label' => 'Description',
+              'value' => ''
+            ]
+          ]
         ]
       ]
     ] + parent::defaultConfiguration();

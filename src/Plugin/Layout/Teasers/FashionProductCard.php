@@ -67,6 +67,10 @@ class FashionProductCard extends FormatageModelsTeasers {
   function defaultConfiguration() {
     return [
       'load_libray' => false,
+      'css' => 'mt-5',
+      'region_css_badge' => 'font-weight-bold font-italic',
+      'region_css_wishlist' => 'font-weight-bold',
+      'region_css_availability' => 'bg-info text-white text-center p-2',
       'infos' => [
         'builder-form' => true,
         'info' => [
