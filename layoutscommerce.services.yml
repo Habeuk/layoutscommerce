@@ -2,3 +2,7 @@ services:
   layoutscommerce.product_variation:
     class: Drupal\layoutscommerce\Services\LayoutscommerceProductVariation
     arguments: ['@commerce_price.currency_formatter']
+    
+  layoutscommerce.flat.lazy_builders:
+    class: Drupal\layoutscommerce\Services\FormatterAddToCart\AddToCartCleanLazyBuilders
+    arguments: ['@entity_type.manager', '@form_builder', '@entity.repository']
