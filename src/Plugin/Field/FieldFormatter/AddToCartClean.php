@@ -27,6 +27,11 @@ class AddToCartClean extends AddToCartFormatter {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = parent::viewElements($items, $langcode);
+    
+    if (isset($elements[0]['add_to_cart_form']['#lazy_builder'][0]))
+      $elements[0]['add_to_cart_form']['#lazy_builder'][0] = 'layoutscommerce.flat.lazy_builders:addToCartForm';
+    
+    // dump($elements);
     return $elements;
   }
   
