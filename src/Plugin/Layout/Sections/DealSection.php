@@ -11,12 +11,12 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  * Custom layout for Layoutscommmerce module
  *
  * @Layout(
- *   id = "deal_section",
+ *   id = "commerce_deal_section",
  *   label = @Translation(" Commerce Deal Section"),
  *   category = @Translation("layoutscommerce"),
  *   path = "layouts/sections",
- *   template = "deal",
- *   library = "layoutscommerce/deal",
+ *   template = "commerce-deal",
+ *   library = "layoutscommerce/commerce-deal",
  *   default_region = "title",
  *   regions = {
  *      "title" = {
@@ -69,8 +69,8 @@ class DealSection extends FormatageModelsSection {
     return parent::defaultConfiguration() + [
       'load_libray' => false,
       'region_title_css' => '',
-      'region_link_css' => '',
-      'region_price_css' => '',
+      'region_link_css' => 'ml-5 btn small rounded-pill btn ',
+      'region_price_css' => 'd-flex justify-content-end align-items-center',
       'region_subtitle_css' => '',
       'infos' => [
         'builder-form' => true,

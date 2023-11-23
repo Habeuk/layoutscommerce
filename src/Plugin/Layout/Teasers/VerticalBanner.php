@@ -78,7 +78,7 @@ class VerticalBanner extends FormatageModelsSection {
     return parent::defaultConfiguration() + [
       'load_libray' => false,
       'region_image_css' => '',
-      'region_link_css' => '',
+      'region_button_css' => 'btn small rounded-pill',
       'infos' => [
         'builder-form' => true,
         'info' => [

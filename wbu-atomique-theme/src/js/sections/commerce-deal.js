@@ -1,0 +1,1 @@
+import "@stephane888/wbu-atomique/scss/organisme/commerce/product-display/product-display.scss";

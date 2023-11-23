@@ -1,0 +1,33 @@
+{% if content %}
+	<div {{ attributes.addClass('move-container') }}>
+		<div class="container">
+
+			<div class="move-display d-flex justify-content-between align-items-center bg-light py-3  px-5">
+				{% if content.title|has_value %}
+					<div {{ region_attributes.title.addClass('move-a title') }}>
+						{{ content.title }}
+					</div>
+				{% endif %}
+				{% if content.price|has_value or content.subtitle|has_value or content.link|has_value %}
+					<div class="move-b d-flex align-items-center">
+						{% if content.price|has_value or content.subtitle|has_value %}
+							<div class="move-details d-flex flex-column mr-5">
+								{% if content.price|has_value %}
+									<h5 {{ region_attributes.price.addClass('price') }}>
+										{{ content.price }}
+									</h5>
+								{% endif %}
+								{% if content.subtitle|has_value %}
+                                <h6 {{ region_attributes.subtitle.addClass('subtitle') }}>{{ content.subtitle }}</h6>
+                                {% endif %}
+							</div>
+						{% endif %}
+						{% if content.link|has_value %}
+							<button {{ region_attributes.link.addClass('button') }}>{{ content.link }}</button>
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endif %}
