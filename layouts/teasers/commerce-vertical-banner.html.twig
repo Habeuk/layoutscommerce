@@ -1,0 +1,34 @@
+{% if content %}
+	<div {{ attributes.addClass('vertical-banner') }}>
+		{% if content.category|has_value or content.title|has_value or content.description|has_value or content.button|has_value %}
+			<div class="vertical-banner__content">
+				<div class="vertical-banner__content__wrapper">
+					{% if content.category|has_value %}
+						<div {{ region_attributes.category.addClass('vertical-banner__categorie') }}>{{ content.category }}</div>
+					{% endif %}
+					{% if content.title|has_value %}
+						<div {{ region_attributes.title.addClass('vertical-banner__title') }}>
+							{{ content.title }}
+						</div>
+					{% endif %}
+					{% if content.description|has_value %}
+						<div {{ region_attributes.description.addClass('vertical-banner__description') }}>
+							{{ content.description }}
+						</div>
+					{% endif %}
+					{% if content.button|has_value %}
+						<div {{ region_attributes.button.addClass('vertical-banner__btn') }}>{{ content.button }}</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+		{% if content.image %}
+			<div {{ region_attributes.image.addClass('vertical-banner__image') }}>
+				{{ content.image }}
+			</div>
+		{% endif %}
+		{% if content.link %}
+			{{ content.link }}
+		{% endif %}
+	</div>
+{% endif %}

@@ -1,0 +1,1 @@
+import "@stephane888/wbu-atomique/scss/organisme/commerce/vertical-banner/vertical-banner.scss";

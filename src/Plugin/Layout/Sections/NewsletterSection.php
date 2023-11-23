@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\layoutscommerce\Plugin\Layout\Teasers;
+namespace Drupal\layoutscommerce\Plugin\Layout\Sections;
 
 use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\formatage_models\FormatageModelsThemes;
@@ -11,25 +11,31 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  * Custom layout for Layoutscommmerce module
  *
  * @Layout(
- *   id = "brand",
- *   label = @Translation(" Commerce Brand Section"),
+ *   id = "commerce_newsletter_section",
+ *   label = @Translation(" Commerce Newsletter Section"),
  *   category = @Translation("layoutscommerce"),
  *   path = "layouts/sections",
- *   template = "brand",
- *   library = "layoutscommerce/brand",
- *   default_region = "image",
+ *   template = "commerce-newsletter",
+ *   library = "layoutscommerce/commerce-newsletter",
+ *   default_region = "title",
  *   regions = {
- *      "image" = {
- *          "label" = @Translation("Image "),
+ *      "title" = {
+ *          "label" = @Translation("Title "),
  *      },
- *      "link" = {
- *          "label" = @Translation("Link "),
+ *      "subtitle" = {
+ *          "label" = @Translation("SubTitle"),
+ *      },
+ *      "image" = {
+ *          "label" = @Translation("Image"),
+ *      },
+ *      "form" = {
+ *          "label" = @Translation("Form"),
  *      }
  *   }
  * )
  *
  */
-class Brand extends FormatageModelsSection {
+class NewsletterSection extends FormatageModelsSection {
   
   /**
    *
@@ -39,7 +45,7 @@ class Brand extends FormatageModelsSection {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/sections/brtand.png");
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/sections/commerce-newsletter.png");
   }
   
   /**
@@ -62,8 +68,9 @@ class Brand extends FormatageModelsSection {
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
       'load_libray' => false,
-      'region_image_css' => '',
-      'region_link_css' => '',
+      'region_title_css' => '',
+      'region_subtitle_css' => '',
+      'region_form_css' => '',
       'infos' => [
         'builder-form' => true,
         'info' => [
@@ -71,15 +78,27 @@ class Brand extends FormatageModelsSection {
           'loader' => 'static'
         ],
         'fields' => [
-          'Image' => [
+          'title' => [
+            'text_html' => [
+              'label' => 'Title',
+              'value' => ''
+            ]
+          ],
+          'image' => [
             'text_html' => [
               'label' => 'Image',
               'value' => ''
             ]
           ],
-          'link' => [
+          'form' => [
             'text_html' => [
-              'label' => 'Link',
+              'label' => 'Form',
+              'value' => ''
+            ]
+          ],
+          'subtitle' => [
+            'text_html' => [
+              'label' => 'Subtitle',
               'value' => ''
             ]
           ],

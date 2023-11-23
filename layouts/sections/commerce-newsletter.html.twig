@@ -1,0 +1,36 @@
+{% if content %}
+
+	{% if content.image.layout_builder_add_block %}
+		{{ content.image }}
+	{% endif %}
+	{% if content.image|layout_bg_img %}
+		{% set attributes = attributes.merge(content.image|layout_bg_img) %}
+	{% endif %}
+	<section {{ attributes.addClass('newsletter') }}>
+		<div class="container">
+			<div class="newsletter__container">
+				{% if content.title|has_value or content.subtitle|has_value %}
+					<div class="newsletter__text">
+						{% if content.title|has_value %}
+							<div {{ region_attributes.title.addClass('newsletter__title') }}>
+								{{ content.title }}
+							</div>
+						{% endif %}
+						{% if content.subtitle|has_value %}
+							<div {{ region_attributes.subtitle.addClass('newsletter__subtitle') }}>
+								{{ content.subtitle }}
+							</div>
+						{% endif %}
+					</div>
+				{% endif %}
+				{% if content.form|has_value %}
+                <div class="newsletter__form">
+					<div {{ region_attributes.form }}>
+						{{ content.form }}
+					</div>
+                </div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+{% endif %}

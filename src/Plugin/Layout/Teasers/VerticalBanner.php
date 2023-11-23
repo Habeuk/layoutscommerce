@@ -11,12 +11,12 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  * Custom layout for Layoutscommmerce module
  *
  * @Layout(
- *   id = "brand",
- *   label = @Translation(" Commerce Brand Section"),
+ *   id = "commerce_vertical_banner",
+ *   label = @Translation(" Commerce Vertical Banner"),
  *   category = @Translation("layoutscommerce"),
- *   path = "layouts/sections",
- *   template = "brand",
- *   library = "layoutscommerce/brand",
+ *   path = "layouts/teasers",
+ *   template = "commerce-vertical-banner",
+ *   library = "layoutscommerce/commerce-vertical-banner",
  *   default_region = "image",
  *   regions = {
  *      "image" = {
@@ -24,12 +24,27 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  *      },
  *      "link" = {
  *          "label" = @Translation("Link "),
+ *      },
+ *      "button" = {
+ *          "label" = @Translation("Button "),
+ *      },
+ *      "category" = {
+ *          "label" = @Translation("Category "),
+ *      },
+ *      "description" = {
+ *          "label" = @Translation("Description "),
+ *      },
+ *      "subtitle" = {
+ *          "label" = @Translation("Sub title "),
+ *      },
+ *      "title" = {
+ *          "label" = @Translation("Title "),
  *      }
  *   }
  * )
  *
  */
-class Brand extends FormatageModelsSection {
+class VerticalBanner extends FormatageModelsSection {
   
   /**
    *
@@ -39,7 +54,7 @@ class Brand extends FormatageModelsSection {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/sections/brtand.png");
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'layoutscommerce') . "/icones/teasers/commerce-vertical-banner.png");
   }
   
   /**
@@ -80,6 +95,36 @@ class Brand extends FormatageModelsSection {
           'link' => [
             'text_html' => [
               'label' => 'Link',
+              'value' => ''
+            ]
+          ],
+          'button' => [
+            'text_html' => [
+              'label' => 'Button',
+              'value' => ''
+            ]
+          ],
+          'category' => [
+            'text_html' => [
+              'label' => 'Category',
+              'value' => ''
+            ]
+          ],
+          'description' => [
+            'text_html' => [
+              'label' => 'Description',
+              'value' => ''
+            ]
+          ],
+          'subtitle' => [
+            'text_html' => [
+              'label' => 'Subtitle',
+              'value' => ''
+            ]
+          ],
+          'title' => [
+            'text_html' => [
+              'label' => 'Title',
               'value' => ''
             ]
           ],
