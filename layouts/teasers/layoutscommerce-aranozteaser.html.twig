@@ -10,9 +10,11 @@
 			<div {{ region_attributes.add_to_cart.addClass('add_cart') }}>
 				{{ content.add_to_cart }}
 			</div>
+			{% if content.icons %}
 			<div {{ region_attributes.icons.addClass('icons') }}>
 				{{ content.icons }}
 			</div>
+			{% endif %}
 		</div>
 	</div>
 </div>
