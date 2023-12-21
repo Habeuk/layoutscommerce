@@ -6,6 +6,11 @@ use Drupal\commerce_product\Entity\Product;
 use Drupal\commerce_product\Entity\ProductVariation;
 use Drupal\commerce_price\CurrencyFormatter;
 
+/**
+ *
+ * @author stephane
+ *        
+ */
 class LayoutscommerceProductVariation {
   /**
    *
@@ -25,6 +30,12 @@ class LayoutscommerceProductVariation {
   
   /**
    * Permet d'obtenir le rendu du champs prix de la product variation.
+   * //
+   * * Cette logique est deprecit car il faut passer par le champs de rendu afin
+   * d'obtenir les champs sur la variations.
+   * (example, prix, titre de la variation et autres).
+   *
+   * @deprecated
    */
   function getRenderField($fiedProduct, array &$build, $field_variation = 'price') {
     if ($this->getVariant($fiedProduct)) {
@@ -50,6 +61,12 @@ class LayoutscommerceProductVariation {
    * Permet d'obtenir le rendu du champs prix de la product variation.
    * Compliquer d'obtenir le formulaire, on va juste transferer les données de
    * references du produit et laisser JS, faire le reste du TAF.
+   * //
+   * * Cette logique est deprecit car il faut passer par le champs de rendu afin
+   * d'obtenir les champs sur la variations.
+   * (example, prix, titre de la variation et autres).
+   *
+   * @deprecated
    */
   function getRenderAddToCart($fiedProduct, array &$build, $region_name = 'icon_add_to_cart', $regionContent = null) {
     if ($this->getVariant($fiedProduct)) {
@@ -95,6 +112,11 @@ class LayoutscommerceProductVariation {
     }
   }
   
+  /**
+   *
+   * @param array $fiedProduct
+   * @return boolean
+   */
   protected function getVariant($fiedProduct) {
     $fiedProduct = reset($fiedProduct);
     if (!empty($fiedProduct['content']['#object'])) {

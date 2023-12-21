@@ -77,9 +77,10 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-    $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
-    // dump($build);
+    if ($build['#settings']['force_use_code_render_pv']) {
+      $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
+      $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
+    }
     return $build;
   }
   
