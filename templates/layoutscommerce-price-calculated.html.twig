@@ -10,6 +10,6 @@
  * @ingroup themeable
  */
 #}
-<div class="align-items-start d-flex">
-	<span class="currency h5 font-weight-bold mb-0">{{- currency_code -}}</span> <span class="amount">{{- calculated_price -}}</span> <span class="duration h6 mb-0"> / Per Course </span>
+<div {{content_class}}>
+	<span {{symbol_class.addClass('currency') }}>{{- currency_code -}}</span> <span {{price_class.addClass('amount')}}>{{- calculated_price -}}</span> <span {{ duration_class.addClass('duration') }}>{{ duration }}</span>
 </div>

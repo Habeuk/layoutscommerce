@@ -9,7 +9,7 @@ use Drupal\commerce_price\CurrencyFormatter;
 /**
  *
  * @author stephane
- *        
+ * @deprecated
  */
 class LayoutscommerceProductVariation {
   /**

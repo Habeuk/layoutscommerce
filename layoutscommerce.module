@@ -61,10 +61,20 @@ function layoutscommerce_theme() {
       'calculated_price' => NULL,
       'purchasable_entity' => NULL,
       'currency_code' => NULL,
-      'duration' => NULL
+      'duration' => NULL,
+      'content_class' => NULL,
+      'symbol_class' => NULL,
+      'price_class' => NULL,
+      'duration_class' => NULL
     ],
     'preprocess functions' => [
       'template_layoutscommerce_price_calculated'
+    ]
+  ];
+  $hooks['layoutscommerce_badge'] = [
+    'variables' => [
+      'value' => NULL,
+      'value_class' => NULL
     ]
   ];
   return $hooks;
