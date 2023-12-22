@@ -89,7 +89,7 @@ class CommercePriceBadge extends PriceCalculatedFormatter {
         }
         elseif ($type_dispplay == 'percent_reduce') {
           $percent = (($calculated_price_number - $default_price_number) / $default_price_number) * 100;
-          $value = $percent . '%';
+          $value = round($percent, 0) . '%';
         }
       }
       
