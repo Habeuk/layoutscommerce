@@ -30,6 +30,7 @@ class CommercePriceBadge extends PriceCalculatedFormatter {
    */
   public static function defaultSettings() {
     return [
+      'layoutgenentitystyles_view' => 'layoutscommerce/field-price-badge',
       'type_dispplay' => "default_price",
       'value_class' => ''
     ] + parent::defaultSettings();
@@ -40,6 +41,10 @@ class CommercePriceBadge extends PriceCalculatedFormatter {
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
+    $form['layoutgenentitystyles_view'] = [
+      '#type' => 'hidden',
+      '#value' => 'layoutscommerce/field-price-badge'
+    ];
     $form['type_dispplay'] = [
       '#type' => 'select',
       '#title' => 'type_dispplay',
@@ -68,10 +73,12 @@ class CommercePriceBadge extends PriceCalculatedFormatter {
       $context = new Context($this->currentUser, $this->currentStore->getStore(), NULL, [
         'field_name' => $items->getName()
       ]);
-      
+      $value_class = new Attribute();
       /** @var \Drupal\commerce\PurchasableEntityInterface $purchasable_entity */
       $purchasable_entity = $items->getEntity();
+      
       $adjustment_types = array_filter($this->getSetting('adjustment_types'));
+      
       $result = $this->priceCalculator->calculate($purchasable_entity, 1, $context, $adjustment_types);
       $calculated_price = $result->getCalculatedPrice();
       $calculated_price_number = (int) $calculated_price->getNumber();
@@ -86,15 +93,16 @@ class CommercePriceBadge extends PriceCalculatedFormatter {
         }
         elseif ($type_dispplay == 'amount_reduce') {
           $value = $this->currencyFormatter->format($calculated_price_number - $default_price_number, $default_price->getCurrencyCode(), $options);
+          $value_class->addClass('field-badge', 'field-badge--reduction');
         }
         elseif ($type_dispplay == 'percent_reduce') {
           $percent = (($calculated_price_number - $default_price_number) / $default_price_number) * 100;
           $value = round($percent, 0) . '%';
+          $value_class->addClass('field-badge', 'field-badge--reduction');
         }
       }
       
       //
-      $value_class = new Attribute();
       $value_class->addClass($this->getSetting('value_class'));
       
       $elements[0] = [
