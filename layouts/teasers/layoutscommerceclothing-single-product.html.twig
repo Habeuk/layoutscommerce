@@ -12,20 +12,9 @@
 				</div>
 			{% endif %}
 			{% if content.images %}
-			    {% if content.images.layout_builder_add_block %}
-					{{ content.images }}
-				{% else %}
-    				<div {{ region_attributes.images.addClass('images') }}>					
-    					<div class="img-1">
-    						{% set keySearch = {begin:1, number:1} %}
-    						{{ content.images|layout_value_img(keySearch) }}
-    					</div>
-    					<div class="img-2">
-    						{% set keySearch = {begin:2, number:1} %}
-    						{{ content.images|layout_value_img(keySearch) }}
-    					</div>					
+						<div {{ region_attributes.images.addClass('images') }}>					
+    					{{ content.images }}					
     				</div>
-				{% endif %}
 			{% endif %}
 			<div class="clothing-four-btn">
 				{% if content.icon_add_to_cart %}					
