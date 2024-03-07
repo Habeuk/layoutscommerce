@@ -9,7 +9,11 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\commerce_price\CurrencyFormatter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\commerce_product\Plugin\Field\FieldWidget\ProductVariationAttributesWidget;
-use Stephane888\Debug\debugLog;
+use Drupal\commerce_product\Entity\ProductInterface;
+use Drupal\commerce_product\Entity\ProductVariation;
+use Drupal\commerce_product\Event\ProductEvents;
+use Drupal\commerce_product\Event\ProductVariationAjaxChangeEvent;
+use Drupal\commerce_product\Ajax\UpdateProductUrlCommand;
 
 /**
  * Plugin implementation of the 'commerce_product_variation_attributes' widget.
@@ -23,6 +27,7 @@ use Stephane888\Debug\debugLog;
  * )
  */
 class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
+  use TraitRenderAttributes;
   /**
    * Regroupe les variation en function de l'id de attribut.
    * Facilite la recherche.
@@ -75,7 +80,6 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
     /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
     $product = $form_state->get('product');
     $variations = $this->loadEnabledVariations($product);
-    
     if (count($variations) === 0) {
       // Nothing to purchase, tell the parent form to hide itself.
       $form_state->set('hide_form', TRUE);
@@ -86,7 +90,6 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
       return $element;
     }
     elseif (count($variations) === 1) {
-      
       /** @var \Drupal\commerce_product\Entity\ProductVariationInterface $selected_variation */
       $selected_variation = reset($variations);
       // If there is 1 variation but there are attribute fields, then the
@@ -109,7 +112,6 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
           '#items' => '',
           '#currency' => $price->getCurrencyCode()
         ];
-        
         return $element;
       }
       // else {
@@ -139,8 +141,15 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
         $delta,
         'attributes'
       ]);
-      $attribute_values = (array) NestedArray::getValue($form_state->getUserInput(), $parents);
-      $selected_variation = $this->variationAttributeMapper->selectVariation($variations, $attribute_values);
+      $userInputs = $form_state->getUserInput();
+      if (!empty($userInputs['purchased_entity'][0]['merge_commerce_product_variation_id'])) {
+        // (Langues pas pris en change.)
+        $selected_variation = ProductVariation::load($userInputs['purchased_entity'][0]['merge_commerce_product_variation_id']);
+      }
+      else {
+        $attribute_values = (array) NestedArray::getValue($form_state->getUserInput(), $parents);
+        $selected_variation = $this->variationAttributeMapper->selectVariation($variations, $attribute_values);
+      }
     }
     // Otherwise fallback to the default.
     if (!$selected_variation) {
@@ -169,90 +178,92 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
         ]
       ]
     ];
-    
-    /**
-     *
-     * @var \Drupal\commerce_price\Price $price
-     */
-    
-    foreach ($this->variationAttributeMapper->prepareAttributes($selected_variation, $variations) as $field_name => $attribute) {
+    $options = [];
+    // On liste les variations avec les options comme label.
+    foreach ($variations as $variation) {
       /**
        *
-       * @var \Drupal\commerce_product\PreparedAttribute $attribute
+       * @var \Drupal\commerce_product\Entity\ProductVariation $variation
        */
-      $options = [];
-      $values = $attribute->getValues();
-      $variations = $this->getAttributesFromVariations($variations, $field_name);
-      
-      foreach ($values as $k => $value) {
-        if (!empty($variations[$k]))
-          $price = $variations[$k]->getPrice();
-        else
-          $price = $selected_variation->getPrice();
-        
-        //
-        $render_attributes = [
-          '#theme' => 'layoutscommerce_attribute_items',
-          '#price' => $this->currency_formatter->format($price->getNumber(), $price->getCurrencyCode()),
-          '#items' => $value,
-          '#currency' => $price->getCurrencyCode()
-        ];
-        // $options[$k] = $this->renderer->render($render_attributes);
-        $options[$k] = $render_attributes;
-      }
-      // dump($options);
-      // dump($attribute->getElementType());
-      $attribute_element = [
-        // le type doit etre "radios", configurer cela au niveau des attributes
-        // : /admin/commerce/product-attributes
-        '#type' => $attribute->getElementType(),
-        // '#title' => $attribute->getLabel(),
-        '#options' => $options,
-        '#required' => $attribute->isRequired(),
-        '#default_value' => $selected_variation->getAttributeValueId($field_name),
-        '#limit_validation_errors' => [],
-        '#attributes' => [
-          'class' => [
-            'product-pricer'
-          ],
-          'title' => $attribute->getLabel()
-        ],
-        '#wrapper_attributes' => [
-          'class' => [
-            'product-pricer'
-          ]
-        ],
-        '#ajax' => [
-          'callback' => [
-            get_class($this),
-            'ajaxRefresh'
-          ],
-          'wrapper' => $form['#wrapper_id'],
-          // Prevent a jump to the top of the page.
-          'disable-refocus' => TRUE
-        ]
+      $price = $variation->getPrice();
+      $attributes = $this->AttributesRenders($variation->getAttributeValues(), 'product-pricer__item_size');
+      $render_attributes = [
+        '#theme' => 'layoutscommerce_attribute_items',
+        '#price' => $this->currency_formatter->format($price->getNumber(), $price->getCurrencyCode()),
+        '#items' => $attributes,
+        '#currency' => $price->getCurrencyCode()
       ];
-      // Convert the _none option into #empty_value.
-      if (isset($attribute_element['#options']['_none'])) {
-        if (!$attribute_element['#required']) {
-          $attribute_element['#empty_value'] = '';
-        }
-        unset($attribute_element['#options']['_none']);
-      }
-      // Optimize the UX of optional attributes:
-      // - Hide attributes that have no values.
-      // - Require attributes that have a value on each variation.
-      if (empty($attribute_element['#options'])) {
-        $attribute_element['#access'] = FALSE;
-      }
-      if (!isset($element['attributes'][$field_name]['#empty_value'])) {
-        $attribute_element['#required'] = TRUE;
-      }
-      
-      $element['attributes'][$field_name] = $attribute_element;
+      $options[$variation->id()] = $render_attributes;
     }
-    
+    /**
+     * Ce champs melange + attributs.
+     */
+    $element['merge_commerce_product_variation_id'] = [
+      '#type' => 'radios',
+      '#title' => '',
+      '#options' => $options,
+      '#required' => true,
+      '#default_value' => $selected_variation->id(),
+      '#limit_validation_errors' => [],
+      '#attributes' => [
+        'class' => [
+          'product-pricer'
+        ]
+      ],
+      '#wrapper_attributes' => [
+        'class' => [
+          'product-pricer'
+        ]
+      ],
+      '#ajax' => [
+        'callback' => [
+          get_class($this),
+          'ajaxSelectProductVariant'
+        ],
+        'wrapper' => $form['#wrapper_id'],
+        // Prevent a jump to the top of the page.
+        'disable-refocus' => TRUE
+      ]
+    ];
     return $element;
+  }
+  
+  /**
+   * #ajax callback: Replaces the rendered fields on variation change.
+   *
+   * Assumes the existence of a 'selected_variation' in $form_state.
+   */
+  public static function ajaxSelectProductVariant(array $form, FormStateInterface $form_state) {
+    $purchased_entity = $form_state->getValue('purchased_entity');
+    /** @var \Drupal\Core\Render\MainContent\MainContentRendererInterface $ajax_renderer */
+    $ajax_renderer = \Drupal::service('main_content_renderer.ajax');
+    $request = \Drupal::request();
+    $route_match = \Drupal::service('current_route_match');
+    /** @var \Drupal\Core\Ajax\AjaxResponse $response */
+    $response = $ajax_renderer->renderResponse($form, $request, $route_match);
+    if (!empty($purchased_entity[0]['merge_commerce_product_variation_id'])) {
+      $variation = ProductVariation::load($purchased_entity[0]['merge_commerce_product_variation_id']);
+    }
+    else
+      $variation = ProductVariation::load($form_state->get('selected_variation'));
+    /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+    $product = $form_state->get('product');
+    if ($variation->hasTranslation($product->language()->getId())) {
+      $variation = $variation->getTranslation($product->language()->getId());
+    }
+    /** @var \Drupal\commerce_product\ProductVariationFieldRendererInterface $variation_field_renderer */
+    $variation_field_renderer = \Drupal::service('commerce_product.variation_field_renderer');
+    $view_mode = $form_state->get('view_mode');
+    $variation_field_renderer->replaceRenderedFields($response, $variation, $view_mode);
+    // Update Product URL to include variation query parameter.
+    $response->addCommand(new UpdateProductUrlCommand($variation->id()));
+    
+    // Allow modules to add arbitrary ajax commands to the response.
+    $event = new ProductVariationAjaxChangeEvent($variation, $response, $view_mode);
+    $event_dispatcher = \Drupal::service('event_dispatcher');
+    $event_dispatcher->dispatch($event, ProductEvents::PRODUCT_VARIATION_AJAX_CHANGE);
+    
+    return $response;
   }
   
 }

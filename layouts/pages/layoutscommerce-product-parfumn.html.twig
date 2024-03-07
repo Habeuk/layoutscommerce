@@ -1,12 +1,12 @@
 {% if content %}
-<div {{ attributes.addClass('product-block') }}>
+<div {{ attributes.addClass('layoutscommerce-product-block') }}>		
+	<div  {% if settings.config_section %} class="{{ settings.config_section.type_container }} {{ settings.config_section.container_class }}" {% else %} class="container" {% endif %}>	
 		<!-- entete du produit -->
 		{% if content.marque|has_value %}
 		<header {{ region_attributes.marque.addClass(['product-ban']) }}>
 			{{ content.marque }}
 		</header>
 		{% endif %}
-	<div  {% if settings.config_section %} class="{{ settings.config_section.type_container }} {{ settings.config_section.container_class }}" {% else %} class="container" {% endif %}>	
 		<div class="product-content">
 			<div class="row">
 				<!-- Block with relative products images -->
