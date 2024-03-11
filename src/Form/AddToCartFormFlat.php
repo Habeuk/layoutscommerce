@@ -33,7 +33,6 @@ class AddToCartFormFlat extends AddToCartForm {
         ]
       ]
     ];
-    
     return $actions;
   }
   

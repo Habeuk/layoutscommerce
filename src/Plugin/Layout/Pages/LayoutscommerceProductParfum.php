@@ -29,6 +29,9 @@ use Drupal\layoutscommerce\Plugin\Layout\LayoutscommercePage;
  *      "images" = {
  *          "label" = @Translation("images"),
  *      },
+ *      "caracteristiques" = {
+ *          "label" = @Translation("Caracteristiques"),
+ *      },
  *      "titre" = {
  *          "label" = @Translation(" titre "),
  *      },
