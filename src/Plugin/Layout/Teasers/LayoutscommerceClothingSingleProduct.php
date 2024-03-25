@@ -77,32 +77,7 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    if ($build['#settings']['force_use_code_render_pv']) {
-      $this->LayoutCommerceProductVariation->getRenderField($build['title'], $build);
-      $this->LayoutCommerceProductVariation->getRenderAddToCart($build['title'], $build);
-    }
     return $build;
-  }
-  
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
-    $form['limit_text'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Nombre de caractere pour la description'),
-      '#default_value' => $this->configuration['limit_text'],
-      '#description' => 'si la valeur est vide le texte va etre afficher dans son enssemble. Les balises sont supprimées.'
-    ];
-    return $form;
-  }
-  
-  /**
-   *
-   * {@inheritdoc}
-   * @see \Drupal\formatage_models\Plugin\Layout\Teasers\FormatageModelsTeasers::submitConfigurationForm()
-   */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-    parent::submitConfigurationForm($form, $form_state);
-    $this->configuration['limit_text'] = $form_state->getValue('limit_text');
   }
   
   /**
@@ -112,8 +87,6 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
    */
   public function defaultConfiguration() {
     return [
-      'load_libray' => false,
-      'limit_text' => 115,
       'infos' => [
         'builder-form' => true,
         'info' => [
