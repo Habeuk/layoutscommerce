@@ -47,7 +47,7 @@
 								{{content.titleblock1}}
 							</div>
 						{% endif %}
-						{% if content.in_stock %}
+						{% if content.in_stock|has_value %}
 							<div {{ region_attributes.in_stock.addClass('manomano__product--in_stock') }}>
 								{% if settings.product_has_stock %}
 									<strong>

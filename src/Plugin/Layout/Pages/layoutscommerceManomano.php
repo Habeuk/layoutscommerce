@@ -85,13 +85,15 @@ class layoutscommerceManomano extends FormatageModelsPages {
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    if (!empty($build['in_stock']))
-      $this->checkHaveStock($build['in_stock'], $build);
+    // if (!empty($build['in_stock']))
+    // $this->checkHaveStock($build['in_stock'], $build);
     return $build;
   }
   
   /**
    * Permet determiner si on un stock ou pas.
+   *
+   * @deprecated il faut utiliser un block plugin.
    */
   protected function checkHaveStock($in_stock, &$build) {
     foreach ($in_stock as $k => $stock) {
