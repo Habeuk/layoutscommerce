@@ -41,7 +41,7 @@
 							</div>
 						{% endif %}
 					</div>
-					<div class="manomano__product--block">
+					<div class="manomano__product--block ">
 						{% if content.titleblock1 %}
 							<div {{ region_attributes.titleblock1.addClass('manomano__product--titleblock1','titleblock') }}>
 								{{content.titleblock1}}
@@ -65,21 +65,18 @@
 								{% endif %}
 							</div>
 						{% endif %}
-						{% if content.shipping %}
+						{% if content.shipping|has_value %}
 							<div {{ region_attributes.shipping.addClass('manomano__product--shipping','d-flex') }}>
-								<i class="fas fa-check text-success"></i>
 								{{content.shipping}}
 							</div>
 						{% endif %}
-						{% if content.garentie %}
+						{% if content.garentie|has_value %}
 							<div {{ region_attributes.garentie.addClass('manomano__product--garentie','d-flex') }}>
-								<i class="fas fa-balance-scale"></i>
 								{{content.garentie}}
 							</div>
 						{% endif %}
-						{% if content.retour %}
+						{% if content.retour|has_value %}
 							<div {{ region_attributes.retour.addClass('manomano__product--retour','d-flex') }}>
-								<i class="fas fa-sync"></i>
 								{{content.retour}}
 							</div>
 						{% endif %}
