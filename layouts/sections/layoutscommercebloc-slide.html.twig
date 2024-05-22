@@ -1,5 +1,5 @@
 {% if content %}
-	<setion {{attributes.addClass('clothing-bloc-slide')}}>
+	<section {{attributes.addClass('clothing-bloc-slide')}}>
 		<div class="clothing-bloc-slide--container">
 			<div class="img-bloc-slide row">
 				<div class=" col-lg-6 col-md-6 ">
@@ -46,7 +46,9 @@
 							<div class="clothing-four-btn">
 								{% if content.icon_add_to_cart %}
 									<div {{region_attributes.icon_add_to_cart.addClass(['icon_add_to_cart','btn-carre'])}}>
-										 <div class="bc-tooltip"> Ajouter au panier </div>
+										<div class="bc-tooltip">
+											Ajouter au panier
+										</div>
 										{{ content.icon_add_to_cart }}
 									</div>
 								{% endif %}
