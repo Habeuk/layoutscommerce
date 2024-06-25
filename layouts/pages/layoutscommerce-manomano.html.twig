@@ -42,7 +42,8 @@
 							</div>
 						{% endif %}
 					</div>
-					<div class="manomano__product--block ">
+					{% if content.titleblock1 | has_value or content.shipping | has_value %}
+					<div class="manomano__product--block block-1">
 						{% if content.titleblock1 %}
 							<div {{ region_attributes.titleblock1.addClass('manomano__product--titleblock1','titleblock') }}>
 								{{content.titleblock1}}
@@ -82,8 +83,9 @@
 							</div>
 						{% endif %}
 					</div>
+					{% endif %}
 					{% if content.options | has_value %}
-						<div class="manomano__product--block">
+						<div class="manomano__product--block  block-2">
 							{% if content.titleblock2 %}
 								<div {{ region_attributes.titleblock2.addClass('manomano__product--titleblock2','titleblock') }}>
 									{{content.titleblock2}}
