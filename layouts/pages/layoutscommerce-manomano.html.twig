@@ -1,5 +1,6 @@
 {% if content %}
 	<section {{attributes.addClass('manomano__product')}}>
+	<div  {% if settings.config_section %} class="{{ settings.config_section.type_container }} {{ settings.config_section.container_class }}" {% endif %}>	
 		<div class="manomano__product--header">
 			<div class="row">
 				<header class="col-md-8">
@@ -104,5 +105,6 @@
 				{{content.contents}}
 			</div>
 		{% endif %}
+		</div>
 	</section>
 {% endif %}
