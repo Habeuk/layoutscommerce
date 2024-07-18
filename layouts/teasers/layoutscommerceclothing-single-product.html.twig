@@ -78,7 +78,11 @@
     					</div>
     				{% endif %}
     			</div>
-    			<div class="rating"></div>
     		</div>
+    		{% if content.end_content|has_value %}
+        		<div {{region_attributes.end_content.addClass(['end_content'])}}>
+        			{{ content.end_content }}
+        		</div>
+    		{% endif %}
 	</div>
 {% endif %}

@@ -50,7 +50,10 @@ use Drupal\Core\Form\FormStateInterface;
  *     },
  *     "icon_quick_wiew" = {
  *       "label" = @Translation("icon_quick_wiew")
- *     }
+ *     },
+ *     "end_content" = {
+ *       "label" = @Translation("end_content")
+ *     },
  *   }
  * )
  */
@@ -179,5 +182,4 @@ class LayoutscommerceClothingSingleProduct extends LayoutscommerceTeaser {
       ]
     ] + parent::defaultConfiguration();
   }
-  
 }
