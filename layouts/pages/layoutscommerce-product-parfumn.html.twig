@@ -39,20 +39,20 @@
 						{% if content.titre %}
 						<h1 {{ region_attributes.titre.addClass('product-description__name') }}> {{ content.titre }} </h1>
 						{% endif %}
-						{% if content.sub_title %}
+						{% if content.sub_title|has_value %}
 						<div
 							{{ region_attributes.sub_title.addClass('product-description__subname') }}>
 							{{ content.sub_title }}
 						</div>
 						{% endif %}
-						{% if content.sub_title2 %}
+						{% if content.sub_title2|has_value %}
 						<div
 							{{ region_attributes.sub_title2.addClass('product-description__subname') }}>
 							{{ content.sub_title2 }}
 						</div>
 						{% endif %}
 					</div>
-					{% if content.form_add_to_cart %}
+					{% if content.form_add_to_cart|has_value %}
 					<div
 						{{ region_attributes.form_add_to_cart.addClass('form_add_to_cart') }}>
 						{{ content.form_add_to_cart }}
@@ -66,12 +66,12 @@
 					{% endif %}
 					{% if content.block_infos2|has_value %}
     					<div class="product-zone">
-    						{{ content.block_infos2|array_elements(region_attributes.block_infos2.addClass(['block_infos2','product-zone__collect'])) }}
+    						{{ content.block_infos2|array_elements(region_attributes.block_infos2.addClass(['block_infos2'])) }}
     					</div>
 					{% endif %}
 					{% if content.products_add|has_value %}
 					<div
-						{{ region_attributes.products_add.addClass(['products_add','product-card__plus']) }}>
+						{{ region_attributes.products_add.addClass(['products_add']) }}>
 						{{ content.products_add }}
 					</div>
 					{% endif %}

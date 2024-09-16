@@ -125,11 +125,12 @@ class LayoutscommerceProductParfum extends LayoutscommercePage {
     return [
       'css' => '',
       'region_css_marque' => 'text-center',
+      'region_css_products_add' => 'product-card__plus',
+      'region_css_block_infos2' => 'product-zone__collect',
       'config_product' => [
         'content_left' => 'col-md-12 col-xm-12 col-lg-6 mb-5 m-md-0',
         'content_right' => 'col-md-12 col-xm-12 col-lg-6'
       ]
     ] + parent::defaultConfiguration();
   }
-  
 }
