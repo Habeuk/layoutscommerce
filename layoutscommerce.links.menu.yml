@@ -1,0 +1,5 @@
+layoutscommerce.ajax_load_view_product_variant:
+  title: Ajax load view product variant
+  parent: system.admin_config_system
+  route_name: layoutscommerce.ajax_load_view_product_variant
+  weight: 10

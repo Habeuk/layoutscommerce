@@ -20,7 +20,7 @@ use Drupal\commerce_product\Ajax\UpdateProductUrlCommand;
  *
  * @FieldWidget(
  *   id = "product_variation_attributes_box",
- *   label = @Translation("Product variation attributes box"),
+ *   label = @Translation("Affiche les variations dans les box"),
  *   field_types = {
  *     "entity_reference"
  *   }
@@ -225,6 +225,8 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
         'disable-refocus' => TRUE
       ]
     ];
+    // import des styles pour gerer les evenements.
+    $element['merge_commerce_product_variation_id']['#attached']['library'][] = 'more_fields/custom_command';
     return $element;
   }
   
@@ -265,5 +267,4 @@ class ProductVariationAttributesBox extends ProductVariationAttributesWidget {
     
     return $response;
   }
-  
 }

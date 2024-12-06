@@ -1,0 +1,7 @@
+layoutscommerce.ajax_load_view_product_variant:
+  path: '/admin/config/system/ajax-load-view-product-variant'
+  defaults:
+    _title: 'Ajax load view product variant'
+    _form: 'Drupal\layoutscommerce\Form\AjaxLoadViewProductVariantForm'
+  requirements:
+    _permission: 'administer site configuration'

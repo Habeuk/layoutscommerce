@@ -6,3 +6,9 @@ services:
   layoutscommerce.flat.lazy_builders:
     class: Drupal\layoutscommerce\Services\FormatterAddToCart\AddToCartCleanLazyBuilders
     arguments: ['@entity_type.manager', '@form_builder', '@entity.repository']
+  
+  layoutscommerce.commerce_product_variation.ajax_change:
+    class: Drupal\layoutscommerce\EventSubscriber\CommerceProductVariationAjaxChange
+    arguments: []
+    tags:
+      - { name: event_subscriber }
